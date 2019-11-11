@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="wrapper">
+  Please login
+  <div class="dynamic-loggin-wrap" [@logging]="state">
+    <ng-container [ngTemplateOutlet]="template"></ng-container>
+  </div>
+
+  <button (click)="add()">add</button>
+</div>
+
+<ng-template #name>
+  <div class="input-wrap">
+    <span class="input-name">Login</span>
+    <input type="text" class="input-value" [formControl]="control" />
+    <span>Create account</span>
+  </div>
+</ng-template>
+
+<ng-template #password>
+  <div class="input-wrap">
+    <span class="input-name">Password</span>
+    <input type="text" class="input-value" [formControl]="control" />
+    <span>Forgot password ?</span>
+  </div>
+</ng-template>

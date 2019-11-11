@@ -1,5 +1,27 @@
 @import "variables";
+@import "mixins";
 
-:host {
-  color: $color;
+.wrapper {
+  @include space-between;
+  background: $color-brand;
+  position: fixed;
+  height: $navbar-height;
+  top: 0;
+  width: 100vw;
+}
+
+.padding {
+  height: $navbar-height;
+}
+
+.logo {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+}
+
+.nav-icon {
+  cursor: pointer;
+  padding: 1rem;
 }

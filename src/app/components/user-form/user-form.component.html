@@ -58,8 +58,8 @@
     <button class="button" [routerLink]="['/login']">I have an account</button>
     <button
       class="button btn-brand"
-      [disabled]="!control.valid"
-      [class.disabled]="!control.valid"
+      [disabled]="!profileForm.valid"
+      [class.disabled]="!profileForm.valid"
     >
       Sign Up
     </button>

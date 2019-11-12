@@ -1,5 +1,6 @@
 <div class="wrapper">
   <h2>Join Savey Bank</h2>
   <p>...and get even 5 000 GBP credit on start!</p>
-  <app-user-form></app-user-form>
+  <app-user-form (formSubmit)="onformSubmit($event)"></app-user-form>
+  <div class="warnings" *ngIf="errorMessage">{{ errorMessage }}</div>
 </div>

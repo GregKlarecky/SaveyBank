@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { IUser } from "src/app/interfaces/user.interface";
 
 @Component({
   selector: "app-user-form",
@@ -7,6 +8,7 @@ import { FormBuilder, Validators } from "@angular/forms";
   styleUrls: ["./user-form.component.scss", "./form.scss"]
 })
 export class UserFormComponent implements OnInit {
+  @Output() formSubmit: EventEmitter<IUser> = new EventEmitter();
   profileForm = this.fb.group({
     firstname: ["", Validators.required],
     lastname: ["", Validators.required],
@@ -33,5 +35,8 @@ export class UserFormComponent implements OnInit {
 
   public signUp() {
     console.log("dwdwdw");
+    if (this.profileForm.valid) {
+      this.formSubmit.emit(this.profileForm.value);
+    }
   }
 }

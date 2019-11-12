@@ -30,23 +30,12 @@ export class ApiService {
       );
   }
 
-  public signup(
-    firstname: string,
-    lastname: string,
-    email: string,
-    password: string
-  ) {
-    return this.http
-      .post<any>(
-        domain + `users`,
-        { firstname, lastname, email, password },
-        this.httpOptions
-      )
-      .pipe(
-        catchError(error => {
-          return of({ errorMessage: "Unable to create user" });
-        })
-      );
+  public signup(user: IUser) {
+    return this.http.post<any>(domain + `users`, user, this.httpOptions).pipe(
+      catchError(error => {
+        return of({ errorMessage: "Unable to create user" });
+      })
+    );
   }
 
   public updateUser(user: IUser) {

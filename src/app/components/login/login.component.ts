@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   public goToLogin() {
     this.control.setValue("");
+    this.errorMessage = "";
     this.state = "left";
   }
 

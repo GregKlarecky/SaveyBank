@@ -1,13 +1,14 @@
 import {
   Component,
   OnInit,
-  ViewContainerRef,
-  ViewChild,
   AfterViewInit,
   ChangeDetectorRef
 } from "@angular/core";
-import { FormControl } from "@angular/forms";
+import { FormControl, Validators } from "@angular/forms";
 import { switchViews } from "src/app/animations/switch-views.animation";
+import { ApiService } from "src/app/services/api.service";
+import { tap } from "rxjs/operators";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -16,38 +17,54 @@ import { switchViews } from "src/app/animations/switch-views.animation";
   animations: [switchViews]
 })
 export class LoginComponent implements OnInit, AfterViewInit {
-  @ViewChild("form", { read: ViewContainerRef, static: false }) form;
-  @ViewChild("name", { static: false }) name;
-  @ViewChild("password", { static: false }) password;
+  // @ViewChild("form", { read: ViewContainerRef, static: false }) form;
   public state: string = "login";
-  public template: any;
-  public control: FormControl = new FormControl();
+  public active: boolean = false;
+  public name: string;
+  public control: FormControl = new FormControl("", Validators.required);
+  public errorMessage: string;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private apiService: ApiService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
   ngAfterViewInit(): void {
     this.state = "left";
-    this.template = this.name;
     this.cdr.detectChanges();
   }
 
-  add() {
-    if (this.template === this.name) {
-      this.goToPassword();
-    } else {
-      this.goToLogin();
+  public goToPassword() {
+    this.name = this.control.value;
+    if (this.name) {
+      this.state = "right";
+      this.control.setValue("");
     }
   }
 
-  public goToPassword() {
-    this.state = "right";
-    this.template = this.password;
+  public goToLogin() {
+    this.control.setValue("");
+    this.state = "left";
   }
 
-  public goToLogin() {
-    this.state = "left";
-    this.template = this.name;
+  public login(name, password) {
+    if (this.control.valid) {
+      this.apiService
+        .login(this.name, this.control.value)
+        .pipe(
+          tap(user => {
+            if (!user.errorMessage) {
+              this.errorMessage = "";
+              localStorage.setItem("user", JSON.stringify(user));
+              return this.router.navigate(["/account"]);
+            }
+            this.errorMessage = user.errorMessage;
+          })
+        )
+        .subscribe();
+    }
   }
 }

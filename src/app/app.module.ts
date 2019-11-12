@@ -10,6 +10,8 @@ import { AccountComponent } from "./components/account/account.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
+import { SignupComponent } from "./components/signup/signup.component";
 
 @NgModule({
   declarations: [
@@ -17,14 +19,16 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    AccountComponent
+    AccountComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

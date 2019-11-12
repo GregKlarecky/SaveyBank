@@ -1,24 +1,77 @@
 <div class="wrapper">
-  Please login
+  <h2>
+    Please login
+  </h2>
   <div class="dynamic-loggin-wrap" [@logging]="state">
-    <ng-container [ngTemplateOutlet]="template"></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="name"
+      *ngIf="state === 'left'"
+    ></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="password"
+      *ngIf="state === 'right'"
+    ></ng-container>
   </div>
-
-  <button (click)="add()">add</button>
 </div>
 
 <ng-template #name>
-  <div class="input-wrap">
-    <span class="input-name">Login</span>
-    <input type="text" class="input-value" [formControl]="control" />
-    <span>Create account</span>
+  <div class="input-container">
+    <div class="input-wrap">
+      <span class="input-name" [class.active]="active || control.valid"
+        >Login</span
+      >
+      <input
+        type="text"
+        class="input-value"
+        [formControl]="control"
+        (focus)="active = true"
+        (blur)="active = false"
+      />
+    </div>
+    <div class="form-actions">
+      <button class="button" [routerLink]="['/signup']">Create account</button>
+      <button
+        class="button btn-brand"
+        (click)="goToPassword()"
+        [disabled]="!control.valid"
+        [class.disabled]="!control.valid"
+      >
+        Next
+      </button>
+    </div>
   </div>
 </ng-template>
 
 <ng-template #password>
-  <div class="input-wrap">
-    <span class="input-name">Password</span>
-    <input type="text" class="input-value" [formControl]="control" />
-    <span>Forgot password ?</span>
+  <div class="input-container">
+    <div class="input-wrap">
+      <span class="input-name" [class.active]="active || control.valid"
+        >Password</span
+      >
+      <input
+        type="text"
+        class="input-value"
+        [formControl]="control"
+        (focus)="active = true"
+        (blur)="active = false"
+      />
+    </div>
+    <div class="form-actions">
+      <button class="button" (click)="goToLogin()">Back</button>
+      <div class="side-container">
+        <button class="button">Retrieve password</button>
+        <button
+          class="button btn-brand"
+          (click)="login()"
+          [disabled]="!control.valid"
+          [class.disabled]="!control.valid"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+    <div class="warnings" *ngIf="errorMessage">
+      {{ this.errorMessage }}
+    </div>
   </div>
 </ng-template>

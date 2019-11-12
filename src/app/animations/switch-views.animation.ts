@@ -14,11 +14,9 @@ export const switchViews = trigger("logging", [
         ":enter",
         [
           style({
-            transform: "translateX(100vw)",
-            position: "absolute",
-            top: 0
+            transform: "translateX(100vw)"
           }),
-          animate("300ms 300ms ease-out", style({ transform: "translateX(0)" }))
+          animate("300ms 400ms ease-out", style({ transform: "translateX(0)" }))
         ],
         { optional: true }
       ),
@@ -35,11 +33,9 @@ export const switchViews = trigger("logging", [
         ":enter",
         [
           style({
-            transform: "translateX(-100vw)",
-            position: "absolute",
-            top: 0
+            transform: "translateX(-100vw)"
           }),
-          animate("300ms 300ms ease-out", style({ transform: "translateX(0)" }))
+          animate("300ms 400ms ease-out", style({ transform: "translateX(0)" }))
         ],
         { optional: true }
       ),

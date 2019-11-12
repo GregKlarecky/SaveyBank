@@ -1,52 +1,11 @@
 @import "mixins";
 .wrapper {
   padding: 1rem;
-  min-height: calc(100vh - 200px);
+  height: 100%;
 }
 .dynamic-loggin-wrap {
   position: relative;
   min-height: 100px;
-}
-
-.input-container {
-  @include flex-column;
-  width: 100%;
-  position: absolute;
-  top: 0;
-}
-
-.input-value {
-  @include input-text;
-  background: transparent;
-}
-
-.input-name {
-  position: absolute;
-  display: block;
-
-  padding: 0.5rem;
-  margin-left: 0.5rem;
-  z-index: -1;
-  transition: 300ms ease-in;
-}
-.input-wrap {
-  @include flex-column;
-  position: relative;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.active {
-  transform: translateY(-80%);
-  font-size: 0.6rem;
-  // padding: 0.5rem;
-  background: white;
-  z-index: 1;
-}
-
-.form-actions {
-  @include space-between;
-  margin-bottom: 1rem;
 }
 
 .warnings {

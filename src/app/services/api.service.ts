@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
 import { domain } from "src/environments/environment";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { tap, catchError } from "rxjs/operators";
+import { catchError } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { of } from "rxjs";
+import { IUser } from "../interfaces/user.interface";
+import { IPayment } from "../interfaces/payment.interface";
 // import { of } from 'rxjs';
 
 @Injectable({
@@ -26,5 +28,119 @@ export class ApiService {
           return of({ errorMessage: "Unable to login" });
         })
       );
+  }
+
+  public signup(
+    firstname: string,
+    lastname: string,
+    email: string,
+    password: string
+  ) {
+    return this.http
+      .post<any>(
+        domain + `users`,
+        { firstname, lastname, email, password },
+        this.httpOptions
+      )
+      .pipe(
+        catchError(error => {
+          return of({ errorMessage: "Unable to create user" });
+        })
+      );
+  }
+
+  public updateUser(user: IUser) {
+    const httpOptions = this.setAuthorization();
+    return this.http
+      .patch<any>(domain + `users`, { ...user }, httpOptions)
+      .pipe(
+        catchError(error => {
+          return of({ errorMessage: "Unable to update user data" });
+        })
+      );
+  }
+
+  public getToken() {
+    const user = localStorage.getItem("user");
+    if (user) {
+      return JSON.parse(user).token;
+    }
+  }
+
+  public setAuthorization() {
+    const token = this.getToken();
+    if (token) {
+      const httpOptions = { ...this.httpOptions };
+      httpOptions.headers["Athorization"] = token;
+      return httpOptions;
+    }
+    return this.httpOptions;
+  }
+
+  // TODO put token to httpOptions
+  public logout() {
+    const httpOptions = this.setAuthorization();
+    return this.http.post<any>(domain + `users/logout`, httpOptions).pipe(
+      catchError(error => {
+        return of({ errorMessage: "Unable to logout" });
+      })
+    );
+  }
+
+  // TODO put token to httpOptions
+  public logoutAll() {
+    const httpOptions = this.setAuthorization();
+    return this.http.post<any>(domain + `users/logoutAll`, httpOptions).pipe(
+      catchError(error => {
+        return of({ errorMessage: "Unable to logout" });
+      })
+    );
+  }
+
+  public getUser() {
+    const httpOptions = this.setAuthorization();
+    return this.http.get<any>(domain + `users/me`, httpOptions).pipe(
+      catchError(error => {
+        return of({ errorMessage: "Unable to get information abut user" });
+      })
+    );
+  }
+
+  public deleteUser() {
+    const httpOptions = this.setAuthorization();
+    return this.http.delete<any>(domain + `users/me`, httpOptions).pipe(
+      catchError(error => {
+        return of({ errorMessage: "Unable to delete user" });
+      })
+    );
+  }
+
+  public createPayment(payment: IPayment) {
+    const httpOptions = this.setAuthorization();
+    return this.http
+      .post<any>(domain + `payments`, { ...payment }, httpOptions)
+      .pipe(
+        catchError(error => {
+          return of({ errorMessage: "Unable to create payment" });
+        })
+      );
+  }
+
+  public getPayments() {
+    const httpOptions = this.setAuthorization();
+    return this.http.get<any>(domain + `payments`, httpOptions).pipe(
+      catchError(error => {
+        return of({ errorMessage: "Unable to retrieve user's payments" });
+      })
+    );
+  }
+
+  public getPaymentById(id: string) {
+    const httpOptions = this.setAuthorization();
+    return this.http.get<any>(domain + `payments/${id}`, httpOptions).pipe(
+      catchError(error => {
+        return of({ errorMessage: "Unable to retrieve payment by id" });
+      })
+    );
   }
 }

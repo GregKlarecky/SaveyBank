@@ -1,0 +1,67 @@
+<form [formGroup]="profileForm" (submit)="signUp()">
+  <div class="input-wrap">
+    <span class="input-name" [class.active]="firstnameActive || firstname.valid"
+      >First name</span
+    >
+    <input
+      type="text"
+      type="text"
+      class="input-value"
+      formControlName="firstname"
+      (focus)="firstnameActive = true"
+      (blur)="firstnameActive = false"
+    />
+  </div>
+
+  <div class="input-wrap">
+    <span class="input-name" [class.active]="lastnameActive || lastname.valid"
+      >Last name</span
+    >
+    <input
+      type="text"
+      class="input-value"
+      type="text"
+      formControlName="lastname"
+      (focus)="lastnameActive = true"
+      (blur)="lastnameActive = false"
+    />
+  </div>
+
+  <div class="input-wrap">
+    <span class="input-name" [class.active]="emailActive || email.valid"
+      >Email</span
+    >
+    <input
+      type="text"
+      class="input-value"
+      type="text"
+      formControlName="email"
+      (focus)="emailActive = true"
+      (blur)="emailActive = false"
+    />
+  </div>
+
+  <div class="input-wrap">
+    <span class="input-name" [class.active]="passwordActive || password.valid"
+      >Password</span
+    >
+    <input
+      type="text"
+      class="input-value"
+      type="text"
+      formControlName="password"
+      (focus)="passwordActive = true"
+      (blur)="passwordActive = false"
+    />
+  </div>
+  <div class="form-actions">
+    <button class="button" [routerLink]="['/login']">I have an account</button>
+    <button
+      class="button btn-brand"
+      [disabled]="!control.valid"
+      [class.disabled]="!control.valid"
+    >
+      Sign Up
+    </button>
+  </div>
+</form>

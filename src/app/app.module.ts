@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 import { SignupComponent } from "./components/signup/signup.component";
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SignupComponent } from "./components/signup/signup.component";
     FooterComponent,
     LoginComponent,
     AccountComponent,
-    SignupComponent
+    SignupComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,

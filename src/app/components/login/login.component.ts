@@ -13,7 +13,7 @@ import { Router } from "@angular/router";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"],
+  styleUrls: ["./login.component.scss", "../user-form/form.scss"],
   animations: [switchViews]
 })
 export class LoginComponent implements OnInit, AfterViewInit {

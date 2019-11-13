@@ -3,4 +3,5 @@ export interface IPayment {
   accountNumber: string;
   reference?: string;
   amount: number;
+  date: string;
 }

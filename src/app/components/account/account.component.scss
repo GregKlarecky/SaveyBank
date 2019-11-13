@@ -1,0 +1,53 @@
+@import "variables";
+@import "mixins";
+
+.wrapper {
+  padding: 1rem;
+}
+
+.founds {
+  &-title {
+    color: $savey-grey;
+  }
+  .amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+
+.payment-header,
+.banner,
+.payment-body {
+  @include space-between;
+}
+
+.banner {
+  align-items: stretch;
+}
+
+.banner-info {
+  @include flex-column;
+  justify-content: space-between;
+}
+
+.banner-title {
+  margin: 0;
+  font-size: 2rem;
+  color: $color-brand;
+  font-weight: bold;
+}
+
+.payment {
+  padding: 1rem;
+  text-transform: uppercase;
+  color: $savey-grey;
+  border-top: 1px solid $color-brand-darker;
+
+  .amount {
+    color: black;
+    font-weight: bold;
+  }
+  .recipient {
+    color: $color-brand;
+  }
+}

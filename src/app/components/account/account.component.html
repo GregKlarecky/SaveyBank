@@ -1,1 +1,39 @@
-<p>account works!</p>
+<div class="wrapper">
+  <div class="card mb-1">
+    <div class="card-header">Classic account</div>
+    <div class="card-body">
+      <div class="founds-wrapper">
+        <p class="founds-title">Available founds</p>
+        <p class="founds"><span class="amount">5000</span> GBP</p>
+      </div>
+      <button class="button btn-brand w-100 mb-1">Make a payment</button>
+    </div>
+    <ul class="payment-list" *ngIf="payments">
+      <li class="payment" *ngFor="let payment of payments">
+        <div class="payment-header">
+          <span class="date">{{ payment.date }}</span>
+          <span class="balance">4 578 GBP</span>
+        </div>
+        <div class="payment-body">
+          <span class="recipient">{{ payment.recipient }}</span
+          ><span class="amount">{{ payment.amount | currency: "GBP" }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="banner">
+        <div class="banner-info">
+          <p class="banner-title">
+            Cash <br />
+            loan <br />
+            7,22%
+          </p>
+          <button class="button btn-brand">More</button>
+        </div>
+        <img src="assets/images/banner1.png" alt="banner" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -54,16 +54,16 @@ export class ApiService {
     if (user) {
       return JSON.parse(user).token;
     }
+    return "";
   }
 
   public setAuthorization() {
-    const token = this.getToken();
-    if (token) {
-      const httpOptions = { ...this.httpOptions };
-      httpOptions.headers["Athorization"] = token;
-      return httpOptions;
-    }
-    return this.httpOptions;
+    return {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: this.getToken()
+      })
+    };
   }
 
   // TODO put token to httpOptions
@@ -115,13 +115,17 @@ export class ApiService {
       );
   }
 
-  public getPayments() {
+  public getPayments(pageSize?: number) {
     const httpOptions = this.setAuthorization();
-    return this.http.get<any>(domain + `payments`, httpOptions).pipe(
-      catchError(error => {
-        return of({ errorMessage: "Unable to retrieve user's payments" });
-      })
-    );
+    console.log(httpOptions);
+    const pageQuery: string = pageSize ? `?pageSize=${pageSize}` : "";
+    return this.http
+      .get<any>(domain + `payments${pageQuery}`, httpOptions)
+      .pipe(
+        catchError(error => {
+          return of({ errorMessage: "Unable to retrieve user's payments" });
+        })
+      );
   }
 
   public getPaymentById(id: string) {

@@ -16,7 +16,8 @@ export class ApiService {
 
   public httpOptions = {
     headers: new HttpHeaders({
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*"
     })
   };
 
@@ -61,6 +62,7 @@ export class ApiService {
     return {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: this.getToken()
       })
     };

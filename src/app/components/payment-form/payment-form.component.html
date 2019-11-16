@@ -1,0 +1,70 @@
+<form [formGroup]="paymentForm" (ngSubmit)="pay()">
+  <div class="input-wrap">
+    <span class="input-name" [class.active]="recipientActive || recipient.valid"
+      >Name of recipient</span
+    >
+    <input
+      type="text"
+      type="text"
+      class="input-value"
+      formControlName="recipient"
+      (focus)="recipientActive = true"
+      (blur)="recipientActive = false"
+    />
+  </div>
+
+  <div class="input-wrap">
+    <span
+      class="input-name"
+      [class.active]="accountNumberActive || accountNumber.valid"
+      >Account number</span
+    >
+    <input
+      type="text"
+      class="input-value"
+      type="text"
+      formControlName="accountNumber"
+      (focus)="accountNumberActive = true"
+      (blur)="accountNumberActive = false"
+    />
+  </div>
+
+  <div class="input-wrap">
+    <span class="input-name" [class.active]="amountActive || amount.valid"
+      >Amount</span
+    >
+    <input
+      type="text"
+      class="input-value"
+      type="text"
+      formControlName="amount"
+      (focus)="amountActive = true"
+      (blur)="amountActive = false"
+    />
+  </div>
+
+  <div class="input-wrap">
+    <span class="input-name" [class.active]="referenceActive || reference.valid"
+      >Reference</span
+    >
+    <input
+      type="text"
+      class="input-value"
+      type="text"
+      formControlName="reference"
+      (focus)="referenceActive = true"
+      (blur)="referenceActive = false"
+    />
+  </div>
+  <div class="form-actions">
+    <button class="button" [routerLink]="['/account']">Cancel</button>
+    <button
+      class="button btn-brand"
+      [disabled]="!paymentForm.valid"
+      [class.disabled]="!paymentForm.valid"
+      type="submit"
+    >
+      Pay
+    </button>
+  </div>
+</form>

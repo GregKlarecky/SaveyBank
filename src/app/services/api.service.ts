@@ -65,12 +65,11 @@ export class ApiService {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        Authorization: this.getToken()
+        Authorization: `Bearer ${this.getToken()}`
       })
     };
   }
 
-  // TODO put token to httpOptions
   public logout() {
     const httpOptions = this.setAuthorization();
     return this.http.post<any>(domain + `users/logout`, httpOptions).pipe(
@@ -80,7 +79,6 @@ export class ApiService {
     );
   }
 
-  // TODO put token to httpOptions
   public logoutAll() {
     const httpOptions = this.setAuthorization();
     return this.http.post<any>(domain + `users/logoutAll`, httpOptions).pipe(
@@ -110,26 +108,18 @@ export class ApiService {
 
   public createPayment(payment: IPayment) {
     const httpOptions = this.setAuthorization();
-    return this.http
-      .post<any>(domain + `payments`, { ...payment }, httpOptions)
-      .pipe(
-        catchError(error => {
-          return of({ errorMessage: "Unable to create payment" });
-        })
-      );
+    return this.http.post<any>(domain + `payments`, payment, httpOptions).pipe(
+      catchError(error => {
+        return of({ errorMessage: "Unable to create payment" });
+      })
+    );
   }
 
   public getPayments(pageSize?: number) {
     const httpOptions = this.setAuthorization();
     console.log(httpOptions);
     const pageQuery: string = pageSize ? `?pageSize=${pageSize}` : "";
-    return this.http
-      .get<any>(domain + `payments${pageQuery}`, httpOptions)
-      .pipe(
-        catchError(error => {
-          return of({ errorMessage: "Unable to retrieve user's payments" });
-        })
-      );
+    return this.http.get<any>(domain + `payments${pageQuery}`, httpOptions);
   }
 
   public getPaymentById(id: string) {

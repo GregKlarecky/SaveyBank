@@ -3,7 +3,7 @@
 
 body {
   margin: 0;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
   font-family: "Lato", sans-serif;
 }
@@ -63,6 +63,9 @@ body {
   }
   &-body {
     padding: 1rem;
+  }
+  &-item {
+    padding: 0 1rem;
   }
 }
 

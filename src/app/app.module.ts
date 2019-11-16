@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 import { SignupComponent } from "./components/signup/signup.component";
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { PaymentFormComponent } from './components/payment-form/payment-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     LoginComponent,
     AccountComponent,
     SignupComponent,
-    UserFormComponent
+    UserFormComponent,
+    PaymentComponent,
+    PaymentFormComponent
   ],
   imports: [
     BrowserModule,

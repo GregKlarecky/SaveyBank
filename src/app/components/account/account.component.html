@@ -6,7 +6,9 @@
         <p class="founds-title">Available founds</p>
         <p class="founds"><span class="amount">5000</span> GBP</p>
       </div>
-      <button class="button btn-brand w-100 mb-1">Make a payment</button>
+      <button class="button btn-brand w-100 mb-1" [routerLink]="['/payment']">
+        Make a payment
+      </button>
     </div>
     <ul class="payment-list" *ngIf="payments">
       <li class="payment" *ngFor="let payment of payments">
@@ -20,6 +22,9 @@
         </div>
       </li>
     </ul>
+    <div *ngIf="errorMessage" class="card-body">
+      <div class="warnings">{{ errorMessage }}</div>
+    </div>
   </div>
   <div class="card">
     <div class="card-body">

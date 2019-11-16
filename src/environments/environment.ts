@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-export const domain = "https://savey-bank-server.gregk.now.sh/";
+export const domain = "https://klarecki-savey-bank.herokuapp.com/";
 
 // export const domain = "http://localhost:3000/";
 

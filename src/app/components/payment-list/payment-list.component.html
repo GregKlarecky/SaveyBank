@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="card mb-1">
+    <div class="card-header">Your transactions</div>
+    <ul class="payment-list" *ngIf="payments">
+      <li class="payment" *ngFor="let payment of payments">
+        <div class="payment-header">
+          <span class="date">{{ payment.date }}</span>
+          <span class="balance">4 578 GBP</span>
+        </div>
+        <div class="payment-body">
+          <span class="recipient">{{ payment.recipient }}</span
+          ><span class="amount">{{ payment.amount | currency: "GBP" }}</span>
+        </div>
+      </li>
+      <li class="payment">
+        <button class="button btn-brand w-100">
+          Load more transactions
+        </button>
+      </li>
+    </ul>
+    <div *ngIf="errorMessage" class="card-body">
+      <div class="warnings">{{ errorMessage }}</div>
+    </div>
+  </div>
+</div>

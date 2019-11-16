@@ -6,7 +6,7 @@
         <p class="founds-title">Available founds</p>
         <p class="founds"><span class="amount">5000</span> GBP</p>
       </div>
-      <button class="button btn-brand w-100 mb-1" [routerLink]="['/payment']">
+      <button class="button btn-brand w-100" [routerLink]="['/payment']">
         Make a payment
       </button>
     </div>
@@ -20,6 +20,11 @@
           <span class="recipient">{{ payment.recipient }}</span
           ><span class="amount">{{ payment.amount | currency: "GBP" }}</span>
         </div>
+      </li>
+      <li class="payment">
+        <button class="button btn-brand w-100" [routerLink]="['/transactions']">
+          Show all transactions
+        </button>
       </li>
     </ul>
     <div *ngIf="errorMessage" class="card-body">

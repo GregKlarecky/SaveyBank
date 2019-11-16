@@ -15,9 +15,7 @@
   }
 }
 
-.payment-header,
-.banner,
-.payment-body {
+.banner {
   @include space-between;
 }
 
@@ -35,19 +33,4 @@
   font-size: 2rem;
   color: $color-brand;
   font-weight: bold;
-}
-
-.payment {
-  padding: 1rem;
-  text-transform: uppercase;
-  color: $savey-grey;
-  border-top: 1px solid $color-brand-darker;
-
-  .amount {
-    color: black;
-    font-weight: bold;
-  }
-  .recipient {
-    color: $color-brand;
-  }
 }

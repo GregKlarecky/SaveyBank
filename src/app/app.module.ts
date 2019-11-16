@@ -15,6 +15,7 @@ import { SignupComponent } from "./components/signup/signup.component";
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentFormComponent } from './components/payment-form/payment-form.component';
+import { PaymentListComponent } from './components/payment-list/payment-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PaymentFormComponent } from './components/payment-form/payment-form.com
     SignupComponent,
     UserFormComponent,
     PaymentComponent,
-    PaymentFormComponent
+    PaymentFormComponent,
+    PaymentListComponent
   ],
   imports: [
     BrowserModule,

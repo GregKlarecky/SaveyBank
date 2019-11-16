@@ -1,3 +1,5 @@
+@import "variables";
+
 @mixin space-between {
   display: flex;
   justify-content: space-between;
@@ -18,3 +20,18 @@
     outline: none;
   }
 }
+
+// @mixin list-item {
+//   padding: 1rem;
+//   text-transform: uppercase;
+//   color: $savey-grey;
+//   border-top: 1px solid $color-brand-darker;
+
+//   .amount {
+//     color: black;
+//     font-weight: bold;
+//   }
+//   .recipient {
+//     color: $color-brand;
+//   }
+// }

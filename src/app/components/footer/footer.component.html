@@ -1,1 +1,7 @@
-<div class="wrapper">footer works!</div>
+<div class="wrapper">
+  <ul class="footer-list">
+    <li class="footer-item" *ngFor="let service of services">
+      {{ service }}
+    </li>
+  </ul>
+</div>

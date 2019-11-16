@@ -34,15 +34,15 @@ body {
     color: white;
     &:active {
       color: white;
-      background: $color-brand-darker;
+      background: $color-brand-dark;
     }
     &:focus {
       color: white;
-      background: $color-brand-darker;
+      background: $color-brand-dark;
     }
     &.disabled {
-      border: 1px solid $color-brand-darker;
-      background: $color-brand-lighter;
+      border: 1px solid $color-brand-dark;
+      background: $color-brand-light;
     }
   }
 }
@@ -54,11 +54,11 @@ body {
 }
 
 .card {
-  border: 1px solid $color-brand-darker;
+  border: 1px solid $color-brand-dark;
   border-radius: 5px;
   &-header {
     padding: 1rem;
-    background: $color-brand-lighter;
+    background: $color-brand-light;
     color: white;
     text-transform: uppercase;
   }
@@ -93,7 +93,7 @@ ul {
   padding: 1rem;
   text-transform: uppercase;
   color: $savey-grey;
-  border-top: 1px solid $color-brand-darker;
+  border-top: 1px solid $color-brand-dark;
 
   .amount {
     color: black;

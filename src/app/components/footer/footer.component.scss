@@ -1,6 +1,14 @@
 @import "variables";
+@import "mixins";
 
 .wrapper {
   height: $footer-height;
-  background: grey;
+  background: $color-brand;
+  color: white;
+}
+
+.footer-item {
+  @include flex-center;
+  padding: 1rem;
+  border-top: 1px solid $color-brand-dark;
 }

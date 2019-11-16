@@ -6,6 +6,12 @@
   align-items: center;
 }
 
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin flex-column {
   display: flex;
   flex-direction: column;
@@ -20,18 +26,3 @@
     outline: none;
   }
 }
-
-// @mixin list-item {
-//   padding: 1rem;
-//   text-transform: uppercase;
-//   color: $savey-grey;
-//   border-top: 1px solid $color-brand-darker;
-
-//   .amount {
-//     color: black;
-//     font-weight: bold;
-//   }
-//   .recipient {
-//     color: $color-brand;
-//   }
-// }

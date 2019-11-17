@@ -12,7 +12,7 @@ export class PaymentFormComponent implements OnInit {
   @Output() formSubmit: EventEmitter<IUser> = new EventEmitter();
   paymentForm = this.fb.group({
     recipient: ["", Validators.required],
-    accountNumber: ["", Validators.required],
+    accountNumber: ["", [Validators.required, Validators.minLength(32)]],
     amount: ["", Validators.required],
     reference: ["", Validators.required]
   });
@@ -43,5 +43,30 @@ export class PaymentFormComponent implements OnInit {
       };
       this.formSubmit.emit(payload);
     }
+  }
+
+  public isNotNumber($event) {
+    return $event.keyCode > 57 || $event.keyCode < 48;
+  }
+
+  public preventTyping($event) {
+    const value = Array.from(this.accountNumber.value);
+
+    if (value.length >= 32 || this.isNotNumber($event)) {
+      $event.preventDefault();
+    }
+  }
+
+  public onAccountNumberInput($event) {
+    const value = Array.from(this.accountNumber.value);
+    if ($event && value.length >= 32) {
+      $event.preventDefault();
+    }
+    value.forEach((letter, i) => {
+      if ((i - 2) % 5 === 0 && letter !== " ") {
+        value.splice(i, 0, " ");
+        this.accountNumber.setValue(value.join(""));
+      }
+    });
   }
 }

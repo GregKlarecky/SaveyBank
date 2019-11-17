@@ -16,7 +16,7 @@
   <div class="input-wrap">
     <span
       class="input-name"
-      [class.active]="accountNumberActive || accountNumber.valid"
+      [class.active]="accountNumberActive || accountNumber.value.length"
       >Account number</span
     >
     <input
@@ -26,6 +26,8 @@
       formControlName="accountNumber"
       (focus)="accountNumberActive = true"
       (blur)="accountNumberActive = false"
+      (keypress)="preventTyping($event)"
+      (input)="onAccountNumberInput()"
     />
   </div>
 

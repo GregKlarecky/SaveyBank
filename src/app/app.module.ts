@@ -12,10 +12,11 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 import { SignupComponent } from "./components/signup/signup.component";
-import { UserFormComponent } from './components/user-form/user-form.component';
-import { PaymentComponent } from './components/payment/payment.component';
-import { PaymentFormComponent } from './components/payment-form/payment-form.component';
-import { PaymentListComponent } from './components/payment-list/payment-list.component';
+import { UserFormComponent } from "./components/user-form/user-form.component";
+import { PaymentComponent } from "./components/payment/payment.component";
+import { PaymentFormComponent } from "./components/payment-form/payment-form.component";
+import { PaymentListComponent } from "./components/payment-list/payment-list.component";
+import { SideMenuComponent } from "./components/side-menu/side-menu.component";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PaymentListComponent } from './components/payment-list/payment-list.com
     UserFormComponent,
     PaymentComponent,
     PaymentFormComponent,
-    PaymentListComponent
+    PaymentListComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { PaymentListComponent } from './components/payment-list/payment-list.com
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: []
 })
 export class AppModule {}

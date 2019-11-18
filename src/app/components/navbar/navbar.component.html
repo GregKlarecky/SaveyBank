@@ -2,7 +2,11 @@
   <img src="assets/images/logo.png" alt="logo" class="logo" />
   <div>
     <fa-icon [icon]="homeIcon" class="nav-icon" routerLink="/account"></fa-icon>
-    <fa-icon [icon]="menuIcon" class="nav-icon"></fa-icon>
+    <fa-icon
+      [icon]="menuIcon"
+      class="nav-icon"
+      (click)="toggleMenu()"
+    ></fa-icon>
   </div>
 </div>
 <div class="padding"></div>

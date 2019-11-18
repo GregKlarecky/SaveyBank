@@ -5,7 +5,14 @@ $color-brand-light: #009970;
 $color-brand: #006a4d;
 $color-brand-dark: #004d38;
 $savey-grey: rgba(0, 0, 0, 0.45);
+$savey-grey-dark: rgba(0, 0, 0, 0.6);
 
 //dims
 $navbar-height: 50px;
 $footer-height: 208px;
+
+// z-index
+
+$z-navbar: 100;
+$z-side-menu: 201;
+$z-side-menu-backdrop: 200;

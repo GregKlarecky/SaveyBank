@@ -19,4 +19,8 @@ export class DynamicContentService {
       componentRef.instance.data = data;
     }
   }
+
+  public clearContainer(ref) {
+    ref.clear();
+  }
 }

@@ -1,0 +1,12 @@
+<div class="wrapper" [class.active]="active">
+  <div class="header">Name Surname</div>
+  <ul class="">
+    <li (click)="logout()">Log out</li>
+    <li>Start</li>
+    <li routerLink="/transactions">Transactions</li>
+    <li>Accounts</li>
+    <li>Cards</li>
+    <li>Credits</li>
+  </ul>
+</div>
+<div class="backdrop" *ngIf="active" (click)="closeMenu()" @showHide></div>

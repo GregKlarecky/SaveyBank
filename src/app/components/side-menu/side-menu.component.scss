@@ -1,0 +1,38 @@
+@import "variables";
+.wrapper {
+  position: fixed;
+  top: 0;
+  z-index: $z-side-menu;
+  background: white;
+  width: 80%;
+  height: 100%;
+  left: 0;
+  padding: 1rem;
+  transform: translateX(-100%);
+  transition: 300ms ease-in;
+}
+
+.header {
+  padding: 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+li {
+  padding: 1rem 0;
+  color: $color-brand-dark;
+  border-bottom: 0.5px solid $color-brand-dark;
+}
+
+.active {
+  transform: translateX(0);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: $savey-grey-dark;
+  z-index: $z-side-menu-backdrop;
+}

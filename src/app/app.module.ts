@@ -17,6 +17,8 @@ import { PaymentComponent } from "./components/payment/payment.component";
 import { PaymentFormComponent } from "./components/payment-form/payment-form.component";
 import { PaymentListComponent } from "./components/payment-list/payment-list.component";
 import { SideMenuComponent } from "./components/side-menu/side-menu.component";
+import { SpinnerComponent } from "./components/spinner/spinner.component";
+import { LoadingComponent } from "./components/loading/loading.component";
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { SideMenuComponent } from "./components/side-menu/side-menu.component";
     PaymentComponent,
     PaymentFormComponent,
     PaymentListComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    SpinnerComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,6 @@ import { SideMenuComponent } from "./components/side-menu/side-menu.component";
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: []
+  entryComponents: [LoadingComponent]
 })
 export class AppModule {}

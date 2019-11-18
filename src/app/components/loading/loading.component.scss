@@ -1,0 +1,10 @@
+@import "variables";
+
+.modal-backdrop {
+  z-index: $z-modal;
+}
+
+.position {
+  display: block;
+  margin: calc(100vh / 3) auto 0;
+}

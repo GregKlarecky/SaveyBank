@@ -9,6 +9,8 @@ import { switchViews } from "src/app/animations/switch-views.animation";
 import { ApiService } from "src/app/services/api.service";
 import { tap } from "rxjs/operators";
 import { Router } from "@angular/router";
+import { DynamicContentService } from "src/app/services/dynamic-content.service";
+import { LoadingComponent } from "../loading/loading.component";
 
 @Component({
   selector: "app-login",
@@ -27,7 +29,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   constructor(
     private cdr: ChangeDetectorRef,
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private dynamicContentService: DynamicContentService
   ) {}
 
   ngOnInit() {}
@@ -53,10 +56,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   public login(name, password) {
     if (this.control.valid) {
+      this.dynamicContentService.loadComponent(LoadingComponent);
       this.apiService
         .login(this.name, this.control.value)
         .pipe(
           tap(user => {
+            this.dynamicContentService.clearContainer();
             if (!user.errorMessage) {
               this.errorMessage = "";
               localStorage.setItem("user", JSON.stringify(user));

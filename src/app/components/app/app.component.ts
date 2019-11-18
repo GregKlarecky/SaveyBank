@@ -10,5 +10,7 @@ export class AppComponent {
   @ViewChild("appView", { static: true, read: ViewContainerRef }) appView;
   constructor(private dynamicContentService: DynamicContentService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dynamicContentService.setModalContaineRef(this.appView);
+  }
 }

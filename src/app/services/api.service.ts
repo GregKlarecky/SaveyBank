@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { domain } from "src/environments/environment";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { catchError } from "rxjs/operators";
+import { catchError, mergeMap, tap } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { of } from "rxjs";
 import { IUser } from "../interfaces/user.interface";
@@ -72,11 +72,7 @@ export class ApiService {
 
   public logout() {
     const httpOptions = this.setAuthorization();
-    return this.http.post<any>(domain + `users/logout`, httpOptions).pipe(
-      catchError(error => {
-        return of({ errorMessage: "Unable to logout" });
-      })
-    );
+    return this.http.post<any>(domain + `users/logout`, httpOptions);
   }
 
   public logoutAll() {
@@ -90,11 +86,7 @@ export class ApiService {
 
   public getUser() {
     const httpOptions = this.setAuthorization();
-    return this.http.get<any>(domain + `users/me`, httpOptions).pipe(
-      catchError(error => {
-        return of({ errorMessage: "Unable to get information abut user" });
-      })
-    );
+    return this.http.get<any>(domain + `users/me`, httpOptions);
   }
 
   public deleteUser() {
@@ -108,11 +100,7 @@ export class ApiService {
 
   public createPayment(payment: IPayment) {
     const httpOptions = this.setAuthorization();
-    return this.http.post<any>(domain + `payments`, payment, httpOptions).pipe(
-      catchError(error => {
-        return of({ errorMessage: "Unable to create payment" });
-      })
-    );
+    return this.http.post<any>(domain + `payments`, payment, httpOptions);
   }
 
   public getPayments(pageSize?: number) {
@@ -127,6 +115,30 @@ export class ApiService {
     return this.http.get<any>(domain + `payments/${id}`, httpOptions).pipe(
       catchError(error => {
         return of({ errorMessage: "Unable to retrieve payment by id" });
+      })
+    );
+  }
+
+  public createPaymentAndGetUser($event) {
+    return this.createPayment($event).pipe(
+      mergeMap(payment =>
+        this.getUser().pipe(
+          tap(user => {
+            this.updatedStoredUser(user);
+            this.router.navigate(["/account"]);
+          })
+        )
+      )
+    );
+  }
+
+  public updatedStoredUser(user) {
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        token: savedUser.token,
+        user: { ...savedUser.user, ...user }
       })
     );
   }

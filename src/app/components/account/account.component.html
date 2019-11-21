@@ -4,7 +4,9 @@
     <div class="card-body">
       <div class="founds-wrapper">
         <p class="founds-title">Available founds</p>
-        <p class="founds"><span class="amount">5000</span> GBP</p>
+        <p class="founds">
+          <span class="amount">{{ user?.user.founds }}</span> GBP
+        </p>
       </div>
       <button class="button btn-brand w-100" [routerLink]="['/payment']">
         Make a payment

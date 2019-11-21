@@ -34,9 +34,10 @@ export class SideMenuComponent implements OnInit {
     this.apiService.logout().subscribe(
       logout => {
         this.router.navigate(["/login"]);
+        localStorage.removeItem("user");
       },
       error => {
-        console.error("Couldn't log out");
+        console.error("Unable to logout");
       }
     );
   }

@@ -1,6 +1,10 @@
 export interface IUser {
-  firstname?: string;
-  lastname?: string;
-  email?: string;
-  password?: string;
+  token: string;
+  user: {
+    firstname?: string;
+    lastname?: string;
+    email?: string;
+    password?: string;
+    founds: number;
+  };
 }

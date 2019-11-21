@@ -15,13 +15,8 @@ export class PaymentComponent implements OnInit {
   ngOnInit() {}
 
   public onformSubmit($event: IPayment) {
-    this.apiService.createPayment($event).subscribe(payment => {
-      if (!payment.errorMessage) {
-        this.errorMessage = "";
-
-        return this.router.navigate(["/account"]);
-      }
-      this.errorMessage = payment.errorMessage;
+    this.apiService.createPaymentAndGetUser($event).subscribe(null, error => {
+      this.errorMessage = "Nie udało się stworzyć płatności";
     });
   }
 }

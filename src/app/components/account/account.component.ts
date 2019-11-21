@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiService } from "src/app/services/api.service";
 import { IPayment } from "src/app/interfaces/payment.interface";
-import { IErrorMessage } from "src/app/interfaces/error-message.interface";
+import { IUser } from "src/app/interfaces/user.interface";
 
 @Component({
   selector: "app-account",
@@ -11,11 +11,13 @@ import { IErrorMessage } from "src/app/interfaces/error-message.interface";
 export class AccountComponent implements OnInit {
   public payments: IPayment[];
   public errorMessage: string;
+  public user: IUser;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     this.getPayments(5);
+    this.user = JSON.parse(localStorage.getItem("user"));
   }
 
   public getPayments(pageSize: number) {

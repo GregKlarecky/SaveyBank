@@ -16,7 +16,7 @@
       <li class="payment" *ngFor="let payment of payments">
         <div class="payment-header">
           <span class="date">{{ payment.date }}</span>
-          <span class="balance">4 578 GBP</span>
+          <span class="balance">{{ payment.balance | currency: "GBP" }}</span>
         </div>
         <div class="payment-body">
           <span class="recipient">{{ payment.recipient }}</span

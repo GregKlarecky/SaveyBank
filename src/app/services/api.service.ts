@@ -72,16 +72,18 @@ export class ApiService {
 
   public logout() {
     const httpOptions = this.setAuthorization();
-    return this.http.post<any>(domain + `users/logout`, httpOptions);
+    return this.http.post<any>(domain + `users/logout`, null, httpOptions);
   }
 
   public logoutAll() {
     const httpOptions = this.setAuthorization();
-    return this.http.post<any>(domain + `users/logoutAll`, httpOptions).pipe(
-      catchError(error => {
-        return of({ errorMessage: "Unable to logout" });
-      })
-    );
+    return this.http
+      .post<any>(domain + `users/logoutAll`, null, httpOptions)
+      .pipe(
+        catchError(error => {
+          return of({ errorMessage: "Unable to logout" });
+        })
+      );
   }
 
   public getUser() {

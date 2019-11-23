@@ -69,4 +69,25 @@ export class PaymentFormComponent implements OnInit {
       }
     });
   }
+
+  public isAllowedCharacter($event: any, characters: any[]) {
+    let char = characters.find(char => char === $event.keyCode);
+    return char ? true : false;
+  }
+
+  public onAmountInput($event) {
+    let allowedCharacters = !this.amount.value.includes(".") ? [46, 44] : [];
+
+    if (
+      (this.isNotNumber($event) &&
+        !this.isAllowedCharacter($event, allowedCharacters)) ||
+      this.amount.value.match(/\.\w{2}/g)
+    ) {
+      $event.preventDefault();
+    }
+
+    if (this.amount.value.includes(",")) {
+      this.amount.setValue(this.amount.value.replace(",", "."));
+    }
+  }
 }

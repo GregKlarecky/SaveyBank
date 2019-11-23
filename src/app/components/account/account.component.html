@@ -12,7 +12,7 @@
         Make a payment
       </button>
     </div>
-    <ul class="payment-list" *ngIf="payments">
+    <ul class="payment-list" *ngIf="payments?.length">
       <li class="payment" *ngFor="let payment of payments">
         <div class="payment-header">
           <span class="date">{{ payment.date }}</span>

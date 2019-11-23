@@ -27,22 +27,25 @@
       (focus)="accountNumberActive = true"
       (blur)="accountNumberActive = false"
       (keypress)="preventTyping($event)"
-      (input)="onAccountNumberInput()"
+      (input)="onAccountNumberInput($event)"
     />
   </div>
-
-  <div class="input-wrap">
-    <span class="input-name" [class.active]="amountActive || amount.valid"
-      >Amount</span
-    >
-    <input
-      type="text"
-      class="input-value"
-      type="text"
-      formControlName="amount"
-      (focus)="amountActive = true"
-      (blur)="amountActive = false"
-    />
+  <div class="amount-wrap">
+    <div class="input-wrap">
+      <span class="input-name" [class.active]="amountActive || amount.valid"
+        >Amount</span
+      >
+      <input
+        type="text"
+        class="input-value amount"
+        type="text"
+        formControlName="amount"
+        (focus)="amountActive = true"
+        (blur)="amountActive = false"
+        (keypress)="onAmountInput($event)"
+      />
+    </div>
+    <span class="currency">GBP</span>
   </div>
 
   <div class="input-wrap">

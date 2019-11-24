@@ -105,17 +105,12 @@
           <span class="amount">{{ payment.amount | currency: "GBP" }}</span>
           <span class="balance">{{ payment.balance | currency: "GBP" }}</span>
         </li>
-        <!-- <li class="payment">
-              <button
-                class="button btn-brand w-100"
-                [routerLink]="['/transactions']"
-              >
-                Show all transactions
-              </button>
-            </li> -->
       </ul>
     </div>
 
-    <!-- <app-advertisment class="advertisment"></app-advertisment> -->
+    <div class="ads">
+      <app-advertisment class="advertisment"></app-advertisment>
+      <app-advertisment class="advertisment"></app-advertisment>
+    </div>
   </div>
 </ng-template>

@@ -84,6 +84,7 @@
 }
 
 .last-operations {
+  margin-bottom: 3rem;
   .header {
     display: flex;
     align-items: baseline;
@@ -110,4 +111,13 @@
   span:first-of-type {
     width: 180px;
   }
+}
+
+.ads {
+  display: flex;
+}
+.advertisment {
+  width: 50%;
+  display: block;
+  padding: 0 1rem;
 }

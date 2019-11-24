@@ -3,6 +3,7 @@ import { ScreenService } from "src/app/services/screen.service";
 import { showHide } from "src/app/animations/show-hide.animations";
 import { ApiService } from "src/app/services/api.service";
 import { Router } from "@angular/router";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-side-menu",
@@ -14,7 +15,8 @@ export class SideMenuComponent implements OnInit {
   constructor(
     private screenService: ScreenService,
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {}
   public active: boolean;
 
@@ -35,6 +37,7 @@ export class SideMenuComponent implements OnInit {
       logout => {
         this.router.navigate(["/login"]);
         localStorage.removeItem("user");
+        this.userService.user.next(null);
       },
       error => {
         console.error("Unable to logout");

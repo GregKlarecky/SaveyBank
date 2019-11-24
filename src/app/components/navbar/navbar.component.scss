@@ -2,13 +2,37 @@
 @import "mixins";
 
 .wrapper {
-  @include space-between;
-  background: $color-brand;
+  z-index: $z-navbar;
   position: fixed;
-  height: $navbar-height;
   top: 0;
   width: 100%;
-  z-index: $z-navbar;
+}
+
+.basic-wrapper {
+  @include flex-center;
+  background: $color-brand;
+  height: $navbar-height;
+  color: white;
+}
+
+.basic {
+  @include space-between;
+  width: 100%;
+}
+
+.desktop-features {
+  margin: 0 auto;
+  width: 100%;
+  height: $navbar-height;
+  color: black;
+  background: white;
+  li {
+    padding: 1rem;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .padding {
@@ -22,11 +46,31 @@
   margin: 5px;
 }
 
-.nav-icon {
+.nav-icon,
+.desktop-buttons li {
   cursor: pointer;
   padding: 1rem;
   color: white;
   &:focus {
     outline: none;
+  }
+}
+
+@media screen and (min-width: $screen-l) {
+  .padding {
+    height: $navbar-desktop-height;
+  }
+  .basic,
+  .desktop-features {
+    width: $screen-l;
+  }
+  .basic {
+    padding: 0 1rem;
+  }
+}
+@media screen and (min-width: $screen-xl) {
+  .basic,
+  .desktop-features {
+    width: $screen-xl;
   }
 }

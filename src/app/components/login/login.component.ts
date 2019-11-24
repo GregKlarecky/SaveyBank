@@ -11,6 +11,7 @@ import { tap } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { DynamicContentService } from "src/app/services/dynamic-content.service";
 import { LoadingComponent } from "../loading/loading.component";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-login",
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   constructor(
     private cdr: ChangeDetectorRef,
     private apiService: ApiService,
+    private userService: UserService,
     private router: Router,
     private dynamicContentService: DynamicContentService
   ) {}
@@ -64,6 +66,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             this.dynamicContentService.clearContainer();
             if (!user.errorMessage) {
               this.errorMessage = "";
+              this.userService.user.next(user);
               localStorage.setItem("user", JSON.stringify(user));
               return this.router.navigate(["/account"]);
             }

@@ -117,6 +117,31 @@ ul {
   margin: 0 auto;
 }
 
+.d-mobile {
+  display: block;
+}
+.d-mobile-flex {
+  display: flex;
+}
+.d-mobile-inline {
+  display: inline;
+}
+.d-desktop {
+  display: none;
+}
+.d-desktop-flex {
+  display: none;
+}
+.d-desktop-inline {
+  display: inline;
+}
+
+.shadow {
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
 // Small devices (landscape phones, 576px and up)
 @media screen and (min-width: $screen-s) {
   .container {
@@ -135,6 +160,25 @@ ul {
 @media screen and (min-width: $screen-l) {
   .container {
     width: $screen-l;
+  }
+
+  .d-mobile {
+    display: none;
+  }
+  .d-mobile-flex {
+    display: none;
+  }
+  .d-mobile-inline {
+    display: none;
+  }
+  .d-desktop {
+    display: block;
+  }
+  .d-desktop-flex {
+    display: flex;
+  }
+  .d-desktop-inline {
+    display: inline;
   }
 }
 

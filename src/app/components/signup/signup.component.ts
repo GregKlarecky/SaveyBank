@@ -4,6 +4,7 @@ import { IUser } from "src/app/interfaces/user.interface";
 import { Router } from "@angular/router";
 import { DynamicContentService } from "src/app/services/dynamic-content.service";
 import { LoadingComponent } from "../loading/loading.component";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-signup",
@@ -15,7 +16,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private router: Router,
-    private dynamicContentService: DynamicContentService
+    private dynamicContentService: DynamicContentService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {}
@@ -25,6 +27,7 @@ export class SignupComponent implements OnInit {
     this.apiService.signup($event).subscribe(user => {
       this.dynamicContentService.clearContainer();
       if (!user.errorMessage) {
+        this.userService.user.next(user);
         this.errorMessage = "";
         localStorage.setItem("user", JSON.stringify(user));
         return this.router.navigate(["/account"]);

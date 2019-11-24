@@ -1,13 +1,45 @@
-<div class="wrapper">
-  <img src="assets/images/logo.png" alt="logo" class="logo" />
-  <div>
-    <fa-icon [icon]="homeIcon" class="nav-icon" routerLink="/account"></fa-icon>
-    <fa-icon
-      [icon]="menuIcon"
-      class="nav-icon"
-      (click)="toggleMenu()"
-      *ngIf="apiService.isLoggedin()"
-    ></fa-icon>
+<div class="wrapper shadow">
+  <div class="basic-wrapper">
+    <div class="basic">
+      <img src="assets/images/logo.png" alt="logo" class="logo" />
+      <div>
+        <ng-container [ngTemplateOutlet]="mobile"></ng-container>
+        <ng-container [ngTemplateOutlet]="desktop"></ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="desktop-features d-desktop">
+    <ng-container [ngTemplateOutlet]="desktopFeatures"></ng-container>
   </div>
 </div>
 <div class="padding"></div>
+
+<ng-template #mobile>
+  <fa-icon
+    [icon]="homeIcon"
+    class="nav-icon d-mobile-inline"
+    routerLink="/account"
+  ></fa-icon>
+  <fa-icon
+    [icon]="menuIcon"
+    class="nav-icon d-mobile-inline"
+    (click)="toggleMenu()"
+    *ngIf="apiService.isLoggedin()"
+  ></fa-icon>
+</ng-template>
+
+<ng-template #desktop>
+  <ul class="d-desktop-flex desktop-buttons">
+    <li *ngIf="user">{{ user.user.firstname + " " + user.user.lastname }}</li>
+    <li (click)="logout()">Log out</li>
+  </ul>
+</ng-template>
+
+<ng-template #desktopFeatures>
+  <ul class="d-desktop-flex">
+    <li routerLink="/account">Accounts</li>
+    <li routerLink="/transactions">Transactions</li>
+    <li>Cards</li>
+    <li>Credits</li>
+  </ul>
+</ng-template>

@@ -86,7 +86,19 @@
       </div>
     </div>
     <div class="last-operations">
+      <div class="header">
+        <h1>Last operations</h1>
+        <a [routerLink]="['/transactions']">
+          Show all transactions
+        </a>
+      </div>
       <ul class="desktop-payment-list" *ngIf="payments?.length">
+        <li class="desktop-payment">
+          <span class="date">Date</span>
+          <span class="recipient">Recipient</span>
+          <span class="amount">Amount</span>
+          <span class="balance">Balance</span>
+        </li>
         <li class="desktop-payment" *ngFor="let payment of payments">
           <span class="date">{{ payment.date }}</span>
           <span class="recipient">{{ payment.recipient }}</span>

@@ -2,11 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { ApiService } from "src/app/services/api.service";
 import { IPayment } from "src/app/interfaces/payment.interface";
 import { IUser } from "src/app/interfaces/user.interface";
+import { PaymentListComponent } from "../payment-list/payment-list.component";
+PaymentListComponent;
 
 @Component({
   selector: "app-account",
   templateUrl: "./account.component.html",
-  styleUrls: ["./account.component.scss"]
+  styleUrls: ["./account.component.scss", "../payment-list/desktop-list.scss"]
 })
 export class AccountComponent implements OnInit {
   public payments: IPayment[];

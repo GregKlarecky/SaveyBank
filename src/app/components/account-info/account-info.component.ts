@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { IUser } from "src/app/interfaces/user.interface";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-account-info",
@@ -8,7 +9,11 @@ import { IUser } from "src/app/interfaces/user.interface";
 })
 export class AccountInfoComponent implements OnInit {
   @Input() user: IUser;
-  constructor() {}
+  constructor(private userService: UserService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userService.user.subscribe(user => {
+      this.user = user;
+    });
+  }
 }

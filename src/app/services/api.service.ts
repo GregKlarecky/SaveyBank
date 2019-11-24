@@ -140,7 +140,7 @@ export class ApiService {
       "user",
       JSON.stringify({
         token: savedUser.token,
-        user: { ...savedUser.user, ...user }
+        user: { ...user }
       })
     );
   }

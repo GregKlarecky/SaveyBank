@@ -1,5 +1,10 @@
 <div class="wrapper">
-  <div class="card">
+  <ng-container [ngTemplateOutlet]="mobile"></ng-container>
+  <ng-container [ngTemplateOutlet]="desktop"></ng-container>
+</div>
+
+<ng-template #mobile>
+  <div class="card d-mobile">
     <div class="card-header">Your transactions</div>
     <ul class="payment-list" *ngIf="payments">
       <li class="payment" *ngFor="let payment of payments">
@@ -22,4 +27,56 @@
       <div class="warnings">{{ errorMessage }}</div>
     </div>
   </div>
-</div>
+</ng-template>
+
+<ng-template #desktop>
+  <div class="d-desktop">
+    <app-account-info></app-account-info>
+    <h1>Transactions</h1>
+    <div class="filters">
+      <div class="filter-wrap">
+        <button class="filter date-btn">
+          {{ "Ostatni tydzień" }}
+          <fa-icon [icon]="chevronDown" class="filter-icon"></fa-icon>
+        </button>
+        <ng-container [ngTemplateOutlet]="timePeriod"></ng-container>
+      </div>
+      <div class="filter-wrap">
+        <input type="text" class="filter date date-from" readonly />
+        <fa-icon [icon]="calendar" class="filter-icon calendar"></fa-icon>
+        <ng-container [ngTemplateOutlet]="dateInput"></ng-container>
+      </div>
+      <div class="filter-wrap">
+        <input type="text" class="filter date date-to" readonly />
+        <fa-icon [icon]="calendar" class="filter-icon calendar"></fa-icon>
+        <ng-container [ngTemplateOutlet]="dateInput"></ng-container>
+      </div>
+    </div>
+
+    <ul class="desktop-payment-list" *ngIf="payments?.length">
+      <li class="desktop-payment">
+        <span class="date">Date</span>
+        <span class="recipient">Recipient</span>
+        <span class="amount">Amount</span>
+        <span class="balance">Balance</span>
+      </li>
+      <li class="desktop-payment" *ngFor="let payment of payments">
+        <span class="date">{{ payment.date }}</span>
+        <span class="recipient">{{ payment.recipient }}</span>
+        <span class="amount">{{ payment.amount | currency: "GBP" }}</span>
+        <span class="balance">{{ payment.balance | currency: "GBP" }}</span>
+      </li>
+    </ul>
+
+    <button class="button btn-brand align-center">
+      Load more transactions
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #timePeriod>
+  <div class="popover"></div>
+</ng-template>
+<ng-template #dateInput>
+  <div class="popover"></div>
+</ng-template>

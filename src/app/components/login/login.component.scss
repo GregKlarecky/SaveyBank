@@ -7,3 +7,34 @@
   position: relative;
   min-height: 100px;
 }
+
+.advertisment {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  img {
+    padding: 2rem;
+    width: 50%;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media screen and (min-width: $screen-s) {
+  .advertisment {
+    img {
+      padding: 1rem;
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media screen and (min-width: $screen-m) {
+  .wrapper {
+    display: flex;
+    .login-wrap,
+    .advertisment {
+      width: 50%;
+      padding: 0 2rem;
+    }
+  }
+}

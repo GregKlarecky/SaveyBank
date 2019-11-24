@@ -112,3 +112,35 @@ ul {
   left: 0;
   background: $backdrop-white;
 }
+
+.container {
+  margin: 0 auto;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media screen and (min-width: $screen-s) {
+  .container {
+    width: $screen-s;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media screen and (min-width: $screen-m) {
+  .container {
+    width: $screen-m;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media screen and (min-width: $screen-l) {
+  .container {
+    width: $screen-l;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media screen and (min-width: $screen-xl) {
+  .container {
+    width: $screen-xl;
+  }
+}

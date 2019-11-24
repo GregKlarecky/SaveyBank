@@ -1,5 +1,4 @@
 // colors
-
 $color-brand-lighter: #00e6a8;
 $color-brand-light: #009970;
 $color-brand: #006a4d;
@@ -13,8 +12,13 @@ $navbar-height: 50px;
 $footer-height: 208px;
 
 // z-index
-
 $z-navbar: 100;
 $z-side-menu: 201;
 $z-side-menu-backdrop: 200;
 $z-modal: 300;
+
+// screen-sizes
+$screen-s: 576px;
+$screen-m: 768px;
+$screen-l: 992px;
+$screen-xl: 1200px;

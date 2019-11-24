@@ -1,16 +1,26 @@
 <div class="wrapper">
-  <h2>
-    Please login
-  </h2>
-  <div class="dynamic-loggin-wrap" [@logging]="state">
-    <ng-container
-      [ngTemplateOutlet]="name"
-      *ngIf="state === 'left'"
-    ></ng-container>
-    <ng-container
-      [ngTemplateOutlet]="password"
-      *ngIf="state === 'right'"
-    ></ng-container>
+  <div class="login-wrap">
+    <h2>
+      Please login
+    </h2>
+    <div class="dynamic-loggin-wrap" [@logging]="state">
+      <ng-container
+        [ngTemplateOutlet]="name"
+        *ngIf="state === 'left'"
+      ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="password"
+        *ngIf="state === 'right'"
+      ></ng-container>
+    </div>
+  </div>
+  <div class="advertisment">
+    <img src="assets/images/online-payment.jpg" alt="online-payment" />
+    <div class="description">
+      <h2>Easy online payments</h2>
+      <p>Check out our quick payment service.</p>
+      <p>Founds delivered within 5 minuntes.</p>
+    </div>
   </div>
 </div>
 

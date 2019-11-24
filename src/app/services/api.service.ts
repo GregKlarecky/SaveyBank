@@ -144,4 +144,8 @@ export class ApiService {
       })
     );
   }
+
+  public isLoggedin() {
+    return localStorage.getItem("user");
+  }
 }

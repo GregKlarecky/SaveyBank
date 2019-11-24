@@ -6,6 +6,7 @@
       [icon]="menuIcon"
       class="nav-icon"
       (click)="toggleMenu()"
+      *ngIf="apiService.isLoggedin()"
     ></fa-icon>
   </div>
 </div>

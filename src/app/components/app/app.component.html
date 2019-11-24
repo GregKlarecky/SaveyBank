@@ -5,4 +5,4 @@
   </div>
   <app-footer></app-footer>
 </div>
-<app-side-menu></app-side-menu>
+<app-side-menu *ngIf="apiService.isLoggedin()"></app-side-menu>

@@ -20,6 +20,7 @@ import { SideMenuComponent } from "./components/side-menu/side-menu.component";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { LoadingComponent } from "./components/loading/loading.component";
 import { AdvertismentComponent } from './components/advertisment/advertisment.component';
+import { AccountInfoComponent } from './components/account-info/account-info.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AdvertismentComponent } from './components/advertisment/advertisment.co
     SideMenuComponent,
     SpinnerComponent,
     LoadingComponent,
-    AdvertismentComponent
+    AdvertismentComponent,
+    AccountInfoComponent
   ],
   imports: [
     BrowserModule,

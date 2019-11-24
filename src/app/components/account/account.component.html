@@ -62,29 +62,7 @@
 
 <ng-template #desktop>
   <div class="d-desktop">
-    <div class="desktop-account-info">
-      <div class="desktop-account-name">
-        <span class="header">Classic Account</span>
-        <span class="account-number">{{ user?.user._id }}</span>
-      </div>
-      <div class="desktop-founds">
-        <div class="desktop-details">
-          <div class="lock">
-            <span>Locked</span>
-            <span>{{ 0 | currency: "GBP" }} </span>
-          </div>
-          <hr />
-          <div class="saldo">
-            <span>Saldo</span>
-            <span>{{ user?.user.founds | currency: "GBP" }} </span>
-          </div>
-        </div>
-        <div class="desktop-available-founds">
-          <span>Available founds</span>
-          <span>{{ user?.user.founds | currency: "GBP" }}</span>
-        </div>
-      </div>
-    </div>
+    <app-account-info [user]="user"></app-account-info>
     <div class="last-operations">
       <div class="header">
         <h1>Last operations</h1>

@@ -35,54 +35,6 @@
   font-weight: bold;
 }
 
-.desktop-account-name {
-  @include flex-column;
-  .header {
-    font-size: 2rem;
-    font-weight: 600;
-  }
-  .account-number {
-    color: $savey-grey;
-  }
-}
-
-.desktop-account-info {
-  padding: 3rem 0;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.desktop-founds {
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-}
-
-.desktop-details {
-  width: 200px;
-  .lock,
-  .saldo {
-    @include space-between;
-    span:first-of-type {
-      font-weight: 600;
-    }
-  }
-}
-
-.desktop-available-founds {
-  @include flex-column;
-  justify-content: space-between;
-  span:first-of-type {
-    font-weight: 600;
-    color: $savey-grey;
-  }
-  span:last-of-type {
-    font-weight: 600;
-    font-size: 1.5rem;
-  }
-}
-
 .last-operations {
   margin-bottom: 3rem;
   .header {

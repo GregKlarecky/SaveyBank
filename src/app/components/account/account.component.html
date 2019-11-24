@@ -1,51 +1,109 @@
 <div class="wrapper">
-  <div class="card mb-1">
-    <div class="card-header">Classic account</div>
-    <div class="card-body">
-      <div class="founds-wrapper">
-        <p class="founds-title">Available founds</p>
-        <p class="founds">
-          <span class="amount">{{ user?.user.founds }}</span> GBP
-        </p>
-      </div>
-      <button class="button btn-brand w-100" [routerLink]="['/payment']">
-        Make a payment
-      </button>
-    </div>
-    <ul class="payment-list" *ngIf="payments?.length">
-      <li class="payment" *ngFor="let payment of payments">
-        <div class="payment-header">
-          <span class="date">{{ payment.date }}</span>
-          <span class="balance">{{ payment.balance | currency: "GBP" }}</span>
-        </div>
-        <div class="payment-body">
-          <span class="recipient">{{ payment.recipient }}</span
-          ><span class="amount">{{ payment.amount | currency: "GBP" }}</span>
-        </div>
-      </li>
-      <li class="payment">
-        <button class="button btn-brand w-100" [routerLink]="['/transactions']">
-          Show all transactions
-        </button>
-      </li>
-    </ul>
-    <div *ngIf="errorMessage" class="card-body">
-      <div class="warnings">{{ errorMessage }}</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <div class="banner">
-        <div class="banner-info">
-          <p class="banner-title">
-            Cash <br />
-            loan <br />
-            7,22%
-          </p>
-          <button class="button btn-brand">More</button>
-        </div>
-        <img src="assets/images/banner1.png" alt="banner" />
-      </div>
-    </div>
-  </div>
+  <ng-container [ngTemplateOutlet]="mobile"> </ng-container>
+  <ng-container [ngTemplateOutlet]="desktop"> </ng-container>
 </div>
+
+<ng-template #mobile>
+  <div class="d-mobile">
+    <div class="card mb-1">
+      <div class="card-header">Classic account</div>
+      <div class="card-body">
+        <div class="founds-wrapper">
+          <p class="founds-title">Available founds</p>
+          <p class="founds">
+            <span class="amount">{{ user?.user.founds }}</span> GBP
+          </p>
+        </div>
+        <button class="button btn-brand w-100" [routerLink]="['/payment']">
+          Make a payment
+        </button>
+      </div>
+      <ul class="payment-list" *ngIf="payments?.length">
+        <li class="payment" *ngFor="let payment of payments">
+          <div class="payment-header">
+            <span class="date">{{ payment.date }}</span>
+            <span class="balance">{{ payment.balance | currency: "GBP" }}</span>
+          </div>
+          <div class="payment-body">
+            <span class="recipient">{{ payment.recipient }}</span
+            ><span class="amount">{{ payment.amount | currency: "GBP" }}</span>
+          </div>
+        </li>
+        <li class="payment">
+          <button
+            class="button btn-brand w-100"
+            [routerLink]="['/transactions']"
+          >
+            Show all transactions
+          </button>
+        </li>
+      </ul>
+      <div *ngIf="errorMessage" class="card-body">
+        <div class="warnings">{{ errorMessage }}</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="banner">
+          <div class="banner-info">
+            <p class="banner-title">
+              Cash <br />
+              loan <br />
+              7,22%
+            </p>
+            <button class="button btn-brand">More</button>
+          </div>
+          <img src="assets/images/banner1.png" alt="banner" />
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #desktop>
+  <div class="d-desktop">
+    <div class="desktop-account-info">
+      <div class="desktop-account-name">
+        <span class="header">Classic Account</span>
+        <span class="account-number">{{ user?.user._id }}</span>
+      </div>
+      <div class="desktop-founds">
+        <div class="desktop-details">
+          <div class="lock">
+            <span>Locked</span>
+            <span>{{ 0 | currency: "GBP" }} </span>
+          </div>
+          <hr />
+          <div class="saldo">
+            <span>Saldo</span>
+            <span>{{ user?.user.founds | currency: "GBP" }} </span>
+          </div>
+        </div>
+        <div class="desktop-available-founds">
+          <span>Available founds</span>
+          <span>{{ user?.user.founds | currency: "GBP" }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="last-operations">
+      <ul class="desktop-payment-list" *ngIf="payments?.length">
+        <li class="desktop-payment" *ngFor="let payment of payments">
+          <span class="date">{{ payment.date }}</span>
+          <span class="recipient">{{ payment.recipient }}</span>
+          <span class="amount">{{ payment.amount | currency: "GBP" }}</span>
+          <span class="balance">{{ payment.balance | currency: "GBP" }}</span>
+        </li>
+        <!-- <li class="payment">
+              <button
+                class="button btn-brand w-100"
+                [routerLink]="['/transactions']"
+              >
+                Show all transactions
+              </button>
+            </li> -->
+      </ul>
+    </div>
+
+    <!-- <app-advertisment class="advertisment"></app-advertisment> -->
+  </div>
+</ng-template>

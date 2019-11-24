@@ -19,6 +19,7 @@ import { PaymentListComponent } from "./components/payment-list/payment-list.com
 import { SideMenuComponent } from "./components/side-menu/side-menu.component";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { LoadingComponent } from "./components/loading/loading.component";
+import { AdvertismentComponent } from './components/advertisment/advertisment.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { LoadingComponent } from "./components/loading/loading.component";
     PaymentListComponent,
     SideMenuComponent,
     SpinnerComponent,
-    LoadingComponent
+    LoadingComponent,
+    AdvertismentComponent
   ],
   imports: [
     BrowserModule,

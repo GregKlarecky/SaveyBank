@@ -1,0 +1,19 @@
+@import "variables";
+
+.advertisment {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  img {
+    padding: 2rem;
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: $screen-s) {
+  .advertisment {
+    img {
+      padding: 1rem;
+    }
+  }
+}

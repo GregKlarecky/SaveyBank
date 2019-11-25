@@ -12,3 +12,21 @@
   padding: 1rem;
   border-top: 1px solid $color-brand-dark;
 }
+
+@media screen and(min-width: $screen-l) {
+  .wrapper {
+    height: $footer-desktop-height;
+  }
+  .footer-list {
+    display: flex;
+    border-top: none;
+    margin: 0 auto;
+    width: $screen-l;
+  }
+}
+
+@media screen and(min-width: $screen-xl) {
+  .footer-list {
+    width: $screen-xl;
+  }
+}

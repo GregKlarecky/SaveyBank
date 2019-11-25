@@ -1,3 +1,11 @@
+@import "variables";
+
 .content {
   min-height: calc(100vh - 258px);
+}
+
+@media screen and(min-width: $screen-l) {
+  .content {
+    min-height: calc(100vh - 152px);
+  }
 }

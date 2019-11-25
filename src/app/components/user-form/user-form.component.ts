@@ -34,7 +34,6 @@ export class UserFormComponent implements OnInit {
   ngOnInit() {}
 
   public signUp() {
-    console.log("dwdwdw");
     if (this.profileForm.valid) {
       this.formSubmit.emit(this.profileForm.value);
     }

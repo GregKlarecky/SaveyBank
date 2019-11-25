@@ -77,7 +77,11 @@
           <span class="amount">Amount</span>
           <span class="balance">Balance</span>
         </li>
-        <li class="desktop-payment" *ngFor="let payment of payments">
+        <li
+          class="desktop-payment"
+          *ngFor="let payment of payments"
+          [class.shine]="!payment.amount"
+        >
           <span class="date">{{ payment.date }}</span>
           <span class="recipient">{{ payment.recipient }}</span>
           <span class="amount">{{ payment.amount | currency: "GBP" }}</span>

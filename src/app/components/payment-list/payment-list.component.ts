@@ -5,6 +5,7 @@ import {
   faChevronDown,
   faCalendarAlt
 } from "@fortawesome/free-solid-svg-icons";
+import { emptyList } from "../account/empty-list.mock";
 
 @Component({
   selector: "app-payment-list",
@@ -14,7 +15,7 @@ import {
 export class PaymentListComponent implements OnInit {
   public chevronDown = faChevronDown;
   public calendar = faCalendarAlt;
-  public payments: IPayment[];
+  public payments: IPayment[] = emptyList;
   public errorMessage: string;
 
   constructor(private apiService: ApiService) {}

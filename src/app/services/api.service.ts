@@ -99,7 +99,11 @@ export class ApiService {
 
   public getUser() {
     const httpOptions = this.setAuthorization();
-    return this.http.get<any>(domain + `users/me`, httpOptions);
+    return this.http.get<any>(domain + `users/me`, httpOptions).pipe(
+      tap(user => {
+        this.updatedStoredUser(user);
+      })
+    );
   }
 
   public deleteUser() {
@@ -118,7 +122,6 @@ export class ApiService {
 
   public getPayments(pageSize?: number) {
     const httpOptions = this.setAuthorization();
-    console.log(httpOptions);
     const pageQuery: string = pageSize ? `?pageSize=${pageSize}` : "";
     return this.http.get<any>(domain + `payments${pageQuery}`, httpOptions);
   }
@@ -137,7 +140,6 @@ export class ApiService {
       mergeMap(payment =>
         this.getUser().pipe(
           tap(user => {
-            this.updatedStoredUser(user);
             this.router.navigate(["/account"]);
           })
         )
@@ -147,13 +149,12 @@ export class ApiService {
 
   public updatedStoredUser(user) {
     const savedUser = JSON.parse(localStorage.getItem("user"));
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        token: savedUser.token,
-        user: { ...user }
-      })
-    );
+    const refactoredUser = {
+      token: savedUser.token,
+      user: { ...user }
+    };
+    localStorage.setItem("user", JSON.stringify(refactoredUser));
+    this.userService.user.next(refactoredUser);
   }
 
   public isLoggedin() {

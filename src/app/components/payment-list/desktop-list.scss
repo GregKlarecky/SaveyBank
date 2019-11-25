@@ -13,7 +13,10 @@
 }
 
 .desktop-payment {
+  position: relative;
+  overflow: hidden;
   padding: 0 1rem;
+  min-height: 50px;
   @include space-between;
   border-bottom: 1px solid $savey-grey;
   &:last-of-type {

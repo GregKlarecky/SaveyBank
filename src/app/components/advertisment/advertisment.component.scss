@@ -2,11 +2,15 @@
 
 .advertisment {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   img {
     padding: 2rem;
     width: 50%;
+    max-width: 220px;
+  }
+  p {
+    font-size: 0.8rem;
   }
 }
 

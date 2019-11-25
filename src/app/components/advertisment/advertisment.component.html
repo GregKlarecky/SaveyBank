@@ -1,8 +1,7 @@
 <div class="advertisment">
-  <img src="assets/images/online-payment.jpg" alt="online-payment" />
+  <img [src]="data.imgSrc" alt="online-payment" />
   <div class="description">
-    <h2>Easy online payments</h2>
-    <p>Check out our quick payment service.</p>
-    <p>Founds delivered within 5 minuntes.</p>
+    <h2>{{ data.header }}</h2>
+    <p>{{ data.text }}</p>
   </div>
 </div>

@@ -6,6 +6,7 @@ import { PaymentListComponent } from "../payment-list/payment-list.component";
 import { emptyList } from "./empty-list.mock";
 import { UserService } from "src/app/services/user.service";
 import { Subscription } from "rxjs";
+import { adMock2 } from "../advertisment/ad.mock";
 PaymentListComponent;
 
 @Component({
@@ -14,6 +15,7 @@ PaymentListComponent;
   styleUrls: ["./account.component.scss", "../payment-list/desktop-list.scss"]
 })
 export class AccountComponent implements OnInit, OnDestroy {
+  public adMock2 = adMock2;
   public payments: IPayment[] = emptyList;
   public errorMessage: string;
   public user: IUser;

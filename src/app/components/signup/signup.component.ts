@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { DynamicContentService } from "src/app/services/dynamic-content.service";
 import { LoadingComponent } from "../loading/loading.component";
 import { UserService } from "src/app/services/user.service";
+import { adMock2 } from "../advertisment/ad.mock";
 
 @Component({
   selector: "app-signup",
@@ -12,6 +13,7 @@ import { UserService } from "src/app/services/user.service";
   styleUrls: ["./signup.component.scss"]
 })
 export class SignupComponent implements OnInit {
+  public adMock2 = adMock2;
   public errorMessage: string;
   constructor(
     private apiService: ApiService,

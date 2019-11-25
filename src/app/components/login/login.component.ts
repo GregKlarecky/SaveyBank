@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.state = "left";
   }
 
-  public login(name, password) {
+  public login() {
     if (this.control.valid) {
       this.dynamicContentService.loadComponent(LoadingComponent);
       this.apiService

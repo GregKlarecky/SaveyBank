@@ -5,5 +5,5 @@
     <app-user-form (formSubmit)="onformSubmit($event)"></app-user-form>
     <div class="warnings" *ngIf="errorMessage">{{ errorMessage }}</div>
   </div>
-  <app-advertisment class="advertisment"></app-advertisment>
+  <app-advertisment class="advertisment" [data]="adMock2"></app-advertisment>
 </div>

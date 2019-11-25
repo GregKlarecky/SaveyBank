@@ -4,6 +4,7 @@ import { showHide } from "src/app/animations/show-hide.animations";
 import { ApiService } from "src/app/services/api.service";
 import { Router } from "@angular/router";
 import { UserService } from "src/app/services/user.service";
+import { noop } from "rxjs";
 
 @Component({
   selector: "app-side-menu",
@@ -33,16 +34,9 @@ export class SideMenuComponent implements OnInit {
   }
 
   public logout() {
-    this.apiService.logout().subscribe(
-      logout => {
-        this.router.navigate(["/login"]);
-        localStorage.removeItem("user");
-        this.userService.user.next(null);
-      },
-      error => {
-        console.error("Unable to logout");
-      }
-    );
+    this.apiService.logout().subscribe(noop, error => {
+      console.error("Unable to logout");
+    });
   }
 
   ngAfterViewInit() {}

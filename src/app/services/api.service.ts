@@ -6,13 +6,18 @@ import { Router } from "@angular/router";
 import { of } from "rxjs";
 import { IUser } from "../interfaces/user.interface";
 import { IPayment } from "../interfaces/payment.interface";
+import { UserService } from "./user.service";
 // import { of } from 'rxjs';
 
 @Injectable({
   providedIn: "root"
 })
 export class ApiService {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   public httpOptions = {
     headers: new HttpHeaders({
@@ -72,7 +77,13 @@ export class ApiService {
 
   public logout() {
     const httpOptions = this.setAuthorization();
-    return this.http.post<any>(domain + `users/logout`, null, httpOptions);
+    return this.http.post<any>(domain + `users/logout`, null, httpOptions).pipe(
+      tap(logout => {
+        this.router.navigate(["/login"]);
+        localStorage.removeItem("user");
+        this.userService.user.next(null);
+      })
+    );
   }
 
   public logoutAll() {

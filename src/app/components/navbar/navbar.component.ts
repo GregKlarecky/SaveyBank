@@ -4,6 +4,7 @@ import { ScreenService } from "src/app/services/screen.service";
 import { ApiService } from "src/app/services/api.service";
 import { UserService } from "src/app/services/user.service";
 import { IUser } from "src/app/interfaces/user.interface";
+import { noop } from "rxjs";
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
@@ -27,5 +28,11 @@ export class NavbarComponent implements OnInit {
 
   public toggleMenu() {
     this.screenService.toggleSidemenu.next(true);
+  }
+
+  public logout() {
+    this.apiService.logout().subscribe(noop, error => {
+      console.error("Unable to logout");
+    });
   }
 }

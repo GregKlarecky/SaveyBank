@@ -8,7 +8,7 @@
       </div>
     </div>
   </div>
-  <div class="desktop-features d-desktop">
+  <div class="desktop-features d-desktop" *ngIf="user">
     <ng-container [ngTemplateOutlet]="desktopFeatures"></ng-container>
   </div>
 </div>
@@ -29,8 +29,8 @@
 </ng-template>
 
 <ng-template #desktop>
-  <ul class="d-desktop-flex desktop-buttons">
-    <li *ngIf="user">{{ user.user.firstname + " " + user.user.lastname }}</li>
+  <ul class="d-desktop-flex desktop-buttons" *ngIf="user">
+    <li>{{ user.user.firstname + " " + user.user.lastname }}</li>
     <li (click)="logout()">Log out</li>
   </ul>
 </ng-template>

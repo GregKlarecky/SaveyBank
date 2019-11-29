@@ -8,6 +8,7 @@ import { tap, map, pairwise, bufferCount, filter } from "rxjs/operators";
 export class OnScrollDirective implements OnInit {
   @Input() changeHeight: boolean;
   @Input() translate: boolean;
+  public breakpoint: number = 50;
 
   @HostBinding("style.height") height;
   @HostBinding("style.transform") transform;
@@ -23,19 +24,19 @@ export class OnScrollDirective implements OnInit {
   public onScroll: Observable<any> = fromEvent(window, "scroll").pipe(
     map(() => document.scrollingElement.scrollTop),
     tap(scrollTop => {
-      if (scrollTop <= 100 && this.changeHeight) {
+      if (scrollTop <= this.breakpoint && this.changeHeight) {
         this.height = "100px";
-      } else if (scrollTop <= 100 && this.translate) {
+      } else if (scrollTop <= this.breakpoint && this.translate) {
         this.transform = "translateY(0px)";
       }
     }),
-    filter(scrollTop => scrollTop > 100),
+    filter(scrollTop => scrollTop > this.breakpoint),
     pairwise(),
     bufferCount(5),
     tap(values => {
       const movements = values.map(pair => (pair[0] > pair[1] ? 1 : -1));
-      const verticalMove = movements.reduce((total, num) => total - num);
-      const upwardsMove = verticalMove < 0;
+      const verticalMove = movements.reduce((total, num) => total + num);
+      const upwardsMove = verticalMove > 0;
       this.changeStyle(upwardsMove);
     })
   );
@@ -47,7 +48,7 @@ export class OnScrollDirective implements OnInit {
       this.transform = "translateY(0px)";
     } else if (!upwardsMove && this.changeHeight) {
       this.height = "50px";
-    } else if (upwardsMove <= 50 && this.changeHeight) {
+    } else if (upwardsMove && this.changeHeight) {
       this.height = "100px";
     }
   }

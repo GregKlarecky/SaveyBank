@@ -1,4 +1,4 @@
-<div class="wrapper shadow">
+<div class="wrapper shadow" appOnScroll [changeHeight]="true">
   <div class="basic-wrapper">
     <div class="basic">
       <img src="assets/images/logo.png" alt="logo" class="logo" />
@@ -8,7 +8,12 @@
       </div>
     </div>
   </div>
-  <div class="desktop-features d-desktop" *ngIf="user">
+  <div
+    class="desktop-features d-desktop"
+    *ngIf="user"
+    appOnScroll
+    [translate]="true"
+  >
     <ng-container [ngTemplateOutlet]="desktopFeatures"></ng-container>
   </div>
 </div>

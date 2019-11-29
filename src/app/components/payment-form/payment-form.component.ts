@@ -36,7 +36,8 @@ export class PaymentFormComponent implements OnInit {
 
   public pay() {
     if (this.paymentForm.valid) {
-      const date = formatDate(new Date(), "H:mm d.LL.y", "en-US");
+      // const date = formatDate(new Date(), "H:mm d.LL.y", "en-US");
+      const date = new Date().getTime();
       const payload = {
         ...this.paymentForm.value,
         date

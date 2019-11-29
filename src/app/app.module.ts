@@ -21,6 +21,7 @@ import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { LoadingComponent } from "./components/loading/loading.component";
 import { AdvertismentComponent } from "./components/advertisment/advertisment.component";
 import { AccountInfoComponent } from "./components/account-info/account-info.component";
+import { OnScrollDirective } from './directives/on-scroll.directive';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AccountInfoComponent } from "./components/account-info/account-info.com
     SpinnerComponent,
     LoadingComponent,
     AdvertismentComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    OnScrollDirective
   ],
   imports: [
     BrowserModule,

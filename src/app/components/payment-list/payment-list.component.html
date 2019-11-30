@@ -34,14 +34,15 @@
     <app-account-info></app-account-info>
     <h1>Transactions</h1>
     <div class="filters">
-      <div class="filter-wrap">
+      <!-- <div class="filter-wrap">
         <button class="filter date-btn">
           {{ "Ostatni tydzień" }}
           <fa-icon [icon]="chevronDown" class="filter-icon"></fa-icon>
         </button>
         <ng-container [ngTemplateOutlet]="timePeriod"></ng-container>
-      </div>
+      </div> -->
       <div class="filter-wrap">
+        <span>From date</span>
         <input
           (click)="selectDateFrom()"
           type="text"
@@ -56,6 +57,7 @@
         ></ng-container>
       </div>
       <div class="filter-wrap">
+        <span>To date</span>
         <input
           type="text"
           class="filter date date-to"
@@ -71,8 +73,8 @@
       </div>
     </div>
 
-    <div *ngIf="selectDateError" class="warning-no-border">
-      <span>{{ selectDateError }}</span>
+    <div *ngIf="selectDateError" class="warning-no-border text-right">
+      {{ selectDateError }}
     </div>
 
     <ul class="desktop-payment-list" *ngIf="payments?.length">
@@ -100,16 +102,17 @@
   </div>
 </ng-template>
 
-<ng-template #timePeriod>
+<!-- <ng-template #timePeriod>
   <div class="popover">
-    <!-- <app-select></app-select> -->
+    <app-select></app-select>
   </div>
-</ng-template>
+</ng-template> -->
 
 <ng-template #dateInput>
   <div class="popover">
     <app-calendar
       (date)="onSelectDate($event)"
+      (close)="onClose($event)"
       [startDate]="startDate"
     ></app-calendar>
   </div>

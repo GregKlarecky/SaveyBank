@@ -1,4 +1,12 @@
-import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  HostListener,
+  ViewChild
+} from "@angular/core";
 import { CalendarService } from "src/app/services/calendar.service";
 import { ICalendar, IDay } from "src/app/interfaces/calendar.interface";
 
@@ -9,14 +17,22 @@ import { ICalendar, IDay } from "src/app/interfaces/calendar.interface";
 })
 export class CalendarComponent implements OnInit {
   public month: ICalendar;
+  @ViewChild("view", { static: false }) view;
   public week = ["Mon", "Tue", "Wed", "Th", "Fri", "Sat", "Sun"];
   @Input() startDate: number;
   @Output() date: EventEmitter<IDay> = new EventEmitter();
+  @Output() close: EventEmitter<boolean> = new EventEmitter();
   constructor(private calendarService: CalendarService) {}
 
   ngOnInit() {
     const day = this.startDate ? this.startDate : new Date().getTime();
     this.month = this.calendarService.openDate(day);
+  }
+
+  @HostListener("window:mouseup", ["$event"]) onClickOutside($event) {
+    if (!this.view.nativeElement.contains($event.target)) {
+      this.close.emit(false);
+    }
   }
 
   getNextMonth(nextOrPrevious) {

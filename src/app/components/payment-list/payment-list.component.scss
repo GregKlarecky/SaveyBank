@@ -25,6 +25,7 @@
 
 .filters {
   display: flex;
+  justify-content: flex-end;
 }
 
 .calendar {
@@ -33,11 +34,14 @@
 }
 
 .filter-wrap {
-  margin-right: 1rem;
+  margin-left: 1rem;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  span {
+    padding-right: 1rem;
+  }
 }
 
 .date-btn {

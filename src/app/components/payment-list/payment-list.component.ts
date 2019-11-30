@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, HostListener } from "@angular/core";
 import { ApiService } from "src/app/services/api.service";
 import { IPayment } from "src/app/interfaces/payment.interface";
 import {
@@ -72,7 +72,7 @@ export class PaymentListComponent implements OnInit {
       this.dateTo = this.setDateTo($event);
     }
 
-    if (this.dateFrom || this.dateTo) {
+    if ((this.dateFrom || this.dateTo) && !this.selectDateError) {
       this.submit();
     }
   }
@@ -82,6 +82,7 @@ export class PaymentListComponent implements OnInit {
     const dateFrom = new Date($event.year, $event.month, $event.day).getTime();
     if (dateFrom > this.dateTo) {
       this.selectDateError = "Cannot select start date after end date";
+      return this.dateTo;
     }
     return dateFrom;
   }
@@ -92,8 +93,14 @@ export class PaymentListComponent implements OnInit {
 
     if (dateTo < this.dateFrom) {
       this.selectDateError = "Cannot select end date before start date";
+      return this.dateFrom;
     }
     return dateTo;
+  }
+
+  public onClose($event) {
+    this.showDateFrom = false;
+    this.showDateTo = false;
   }
 
   public submit() {

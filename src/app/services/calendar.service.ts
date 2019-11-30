@@ -37,7 +37,6 @@ export class CalendarService {
       daysArr = this.addBlankInFront(daysArr);
     }
 
-    console.log(daysArr);
     return {
       items: daysArr,
       name: this.months[month],

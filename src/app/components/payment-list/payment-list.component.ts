@@ -89,7 +89,14 @@ export class PaymentListComponent implements OnInit {
 
   public setDateTo($event) {
     this.showDateTo = false;
-    const dateTo = new Date($event.year, $event.month, $event.day).getTime();
+    const dateTo = new Date(
+      $event.year,
+      $event.month,
+      $event.day,
+      23,
+      59,
+      59
+    ).getTime();
 
     if (dateTo < this.dateFrom) {
       this.selectDateError = "Cannot select end date before start date";

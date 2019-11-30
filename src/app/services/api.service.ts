@@ -7,6 +7,7 @@ import { of } from "rxjs";
 import { IUser } from "../interfaces/user.interface";
 import { IPayment } from "../interfaces/payment.interface";
 import { UserService } from "./user.service";
+import { QueryBuilder } from "./queryBuilder.helper";
 // import { of } from 'rxjs';
 
 @Injectable({
@@ -120,10 +121,14 @@ export class ApiService {
     return this.http.post<any>(domain + `payments`, payment, httpOptions);
   }
 
-  public getPayments(pageSize?: number) {
+  public getPayments(pageSize?: number, dateFrom?: number, dateTo?: number) {
     const httpOptions = this.setAuthorization();
-    const pageQuery: string = pageSize ? `?pageSize=${pageSize}` : "";
-    return this.http.get<any>(domain + `payments${pageQuery}`, httpOptions);
+    const queryString = new QueryBuilder(
+      pageSize,
+      dateFrom,
+      dateTo
+    ).buildQueryString();
+    return this.http.get<any>(domain + `payments${queryString}`, httpOptions);
   }
 
   public getPaymentById(id: string) {

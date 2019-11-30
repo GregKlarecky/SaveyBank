@@ -3,7 +3,7 @@
     <h2>Join Savey Bank</h2>
     <p>...and get even 5 000 GBP credit on start!</p>
     <app-user-form (formSubmit)="onformSubmit($event)"></app-user-form>
-    <div class="warnings" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <div class="warning" *ngIf="errorMessage">{{ errorMessage }}</div>
   </div>
   <app-advertisment class="advertisment" [data]="adMock2"></app-advertisment>
 </div>

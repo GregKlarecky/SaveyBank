@@ -1,0 +1,57 @@
+@import "variables";
+
+.wrapper {
+  -webkit-box-shadow: 0px 0px 7px 1px $color-brand;
+  -moz-box-shadow: 0px 0px 7px 1px $color-brand;
+  box-shadow: 0px 0px 7px 1px $color-brand;
+  background: white;
+  width: 350px;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.days-of-week,
+.days-of-month {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.days-of-week {
+  color: $savey-grey;
+}
+.cell-of-month,
+.cell-of-week {
+  height: 38px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+.not-blank {
+  color: $color-brand;
+  &:hover {
+    color: white;
+    background-color: $color-brand-lighter;
+    cursor: pointer;
+  }
+  &:focus {
+    background-color: $color-brand;
+  }
+}
+
+.month {
+  display: flex;
+  justify-content: center;
+  .name {
+    width: 150px;
+    color: $color-brand;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .next {
+    cursor: pointer;
+    padding: 0 10px;
+  }
+}

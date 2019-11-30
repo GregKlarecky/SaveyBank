@@ -6,9 +6,9 @@ export const environment = {
   production: false
 };
 
-export const domain = "https://klarecki-savey-bank.herokuapp.com/";
+// export const domain = "https://klarecki-savey-bank.herokuapp.com/";
 
-// export const domain = "http://localhost:3000/";
+export const domain = "http://localhost:3000/";
 
 /*
  * For easier debugging in development mode, you can import the following file

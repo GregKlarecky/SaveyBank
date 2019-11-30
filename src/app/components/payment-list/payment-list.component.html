@@ -42,15 +42,37 @@
         <ng-container [ngTemplateOutlet]="timePeriod"></ng-container>
       </div>
       <div class="filter-wrap">
-        <input type="text" class="filter date date-from" readonly />
+        <input
+          (click)="selectDateFrom()"
+          type="text"
+          class="filter date date-from"
+          readonly
+          [ngModel]="dateFrom | date: 'd.LL.y'"
+        />
         <fa-icon [icon]="calendar" class="filter-icon calendar"></fa-icon>
-        <ng-container [ngTemplateOutlet]="dateInput"></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="dateInput"
+          *ngIf="showDateFrom"
+        ></ng-container>
       </div>
       <div class="filter-wrap">
-        <input type="text" class="filter date date-to" readonly />
+        <input
+          type="text"
+          class="filter date date-to"
+          readonly
+          (click)="selectDateTo()"
+          [ngModel]="dateTo | date: 'd.LL.y'"
+        />
         <fa-icon [icon]="calendar" class="filter-icon calendar"></fa-icon>
-        <ng-container [ngTemplateOutlet]="dateInput"></ng-container>
+        <ng-container
+          [ngTemplateOutlet]="dateInput"
+          *ngIf="showDateTo"
+        ></ng-container>
       </div>
+    </div>
+
+    <div *ngIf="selectDateError" class="warning-no-border">
+      <span>{{ selectDateError }}</span>
     </div>
 
     <ul class="desktop-payment-list" *ngIf="payments?.length">
@@ -65,7 +87,7 @@
         *ngFor="let payment of payments"
         [class.shine]="!payment.amount"
       >
-        <span class="date">{{ payment.date }}</span>
+        <span class="date">{{ payment.date | date: "d.LL.y" }}</span>
         <span class="recipient">{{ payment.recipient }}</span>
         <span class="amount">{{ payment.amount | currency: "GBP" }}</span>
         <span class="balance">{{ payment.balance | currency: "GBP" }}</span>
@@ -79,8 +101,16 @@
 </ng-template>
 
 <ng-template #timePeriod>
-  <div class="popover"></div>
+  <div class="popover">
+    <!-- <app-select></app-select> -->
+  </div>
 </ng-template>
+
 <ng-template #dateInput>
-  <div class="popover"></div>
+  <div class="popover">
+    <app-calendar
+      (date)="onSelectDate($event)"
+      [startDate]="startDate"
+    ></app-calendar>
+  </div>
 </ng-template>

@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="month">
+    <span (click)="getNextMonth(-1)" class="next"><</span
+    ><span class="name">{{ month.name }} {{ month.year }}</span>
+    <span (click)="getNextMonth(1)" class="next">></span>
+  </div>
+  <div class="days">
+    <div class="days-of-week">
+      <span class="cell-of-week" *ngFor="let dayName of week">{{
+        dayName
+      }}</span>
+    </div>
+    <div class="days-of-month">
+      <span
+        *ngFor="let day of month.items"
+        class="cell-of-month"
+        [class.not-blank]="day.day"
+        (click)="selectDate(day)"
+        >{{ day.day }}</span
+      >
+    </div>
+  </div>
+</div>

@@ -21,7 +21,9 @@ import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { LoadingComponent } from "./components/loading/loading.component";
 import { AdvertismentComponent } from "./components/advertisment/advertisment.component";
 import { AccountInfoComponent } from "./components/account-info/account-info.component";
-import { OnScrollDirective } from './directives/on-scroll.directive';
+import { OnScrollDirective } from "./directives/on-scroll.directive";
+import { CalendarComponent } from "./components/calendar/calendar.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -40,13 +42,15 @@ import { OnScrollDirective } from './directives/on-scroll.directive';
     LoadingComponent,
     AdvertismentComponent,
     AccountInfoComponent,
-    OnScrollDirective
+    OnScrollDirective,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     HttpClientModule
   ],

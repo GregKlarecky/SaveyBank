@@ -47,10 +47,15 @@ body {
   }
 }
 
-.warnings {
+.warning {
   color: red;
   padding: 8px;
   border: 1px solid red;
+}
+
+.warning-no-border {
+  color: red;
+  padding: 8px 0;
 }
 
 .card {

@@ -64,10 +64,15 @@
   }
   .basic,
   .desktop-features {
+    transition: transform ease-in 200ms;
     width: $screen-l;
   }
   .basic {
     padding: 0 1rem;
+  }
+
+  .wrapper {
+    transition: height ease-in 200ms;
   }
 }
 @media screen and (min-width: $screen-xl) {

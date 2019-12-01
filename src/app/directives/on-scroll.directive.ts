@@ -13,8 +13,8 @@ export class OnScrollDirective implements OnInit {
   @HostBinding("class.nav-narrow") navNarrow;
   @HostBinding("class.nav-thick") navThick;
   @HostBinding("style.transform") transform;
-  @HostBinding("style.transition") transition =
-    "transform ease-in 200ms, height ease-in 200ms";
+  // @HostBinding("style.transition") transition =
+  //   "transform ease-in 200ms, height ease-in 200ms";
 
   constructor() {}
 

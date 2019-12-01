@@ -58,10 +58,12 @@ export class CalendarComponent implements OnInit {
   }
 
   selectDate($event: IDay): void {
-    this.date.emit({
-      ...$event,
-      month: this.month.index,
-      year: this.month.year
-    });
+    if ($event.day) {
+      this.date.emit({
+        ...$event,
+        month: this.month.index,
+        year: this.month.year
+      });
+    }
   }
 }

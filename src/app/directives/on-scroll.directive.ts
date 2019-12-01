@@ -1,6 +1,7 @@
 import { Directive, HostBinding, Input, OnInit } from "@angular/core";
 import { Observable, fromEvent } from "rxjs";
 import { tap, map, pairwise, bufferCount, filter } from "rxjs/operators";
+import { ApiService } from "../services/api.service";
 
 @Directive({
   selector: "[appOnScroll]"
@@ -16,7 +17,7 @@ export class OnScrollDirective implements OnInit {
   // @HostBinding("style.transition") transition =
   //   "transform ease-in 200ms, height ease-in 200ms";
 
-  constructor() {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     this.onScroll.subscribe();
@@ -25,10 +26,18 @@ export class OnScrollDirective implements OnInit {
   public onScroll: Observable<any> = fromEvent(window, "scroll").pipe(
     map(() => document.scrollingElement.scrollTop),
     tap(scrollTop => {
-      if (scrollTop <= this.breakpoint && this.changeHeight) {
+      if (
+        scrollTop <= this.breakpoint &&
+        this.changeHeight &&
+        this.apiService.isLoggedin()
+      ) {
         this.navThick = true;
         this.navNarrow = false;
-      } else if (scrollTop <= this.breakpoint && this.translate) {
+      } else if (
+        scrollTop <= this.breakpoint &&
+        this.translate &&
+        this.apiService.isLoggedin()
+      ) {
         this.transform = "translateY(0px)";
       }
     }),
@@ -46,12 +55,16 @@ export class OnScrollDirective implements OnInit {
   changeStyle(upwardsMove) {
     if (!upwardsMove && this.translate) {
       this.transform = "translateY(-50px)";
-    } else if (upwardsMove && this.translate) {
+    } else if (upwardsMove && this.translate && this.apiService.isLoggedin()) {
       this.transform = "translateY(0px)";
     } else if (!upwardsMove && this.changeHeight) {
       this.navNarrow = true;
       this.navThick = false;
-    } else if (upwardsMove && this.changeHeight) {
+    } else if (
+      upwardsMove &&
+      this.changeHeight &&
+      this.apiService.isLoggedin()
+    ) {
       this.navNarrow = false;
       this.navThick = true;
     }

@@ -5,13 +5,17 @@
     >
     <input
       type="text"
-      type="text"
       class="input-value"
       formControlName="recipient"
       (focus)="recipientActive = true"
       (blur)="recipientActive = false"
     />
   </div>
+  <span
+    class="warning-no-border validation-error"
+    *ngIf="!recipient.valid && recipient.touched"
+    >Name of recipient is required field</span
+  >
 
   <div class="input-wrap">
     <span
@@ -22,7 +26,6 @@
     <input
       type="text"
       class="input-value"
-      type="text"
       formControlName="accountNumber"
       (focus)="accountNumberActive = true"
       (blur)="accountNumberActive = false"
@@ -30,6 +33,12 @@
       (input)="onAccountNumberInput($event)"
     />
   </div>
+  <span
+    class="warning-no-border validation-error"
+    *ngIf="!accountNumber.valid && accountNumber.touched"
+    >Account number is required field</span
+  >
+
   <div class="amount-wrap">
     <div class="input-wrap">
       <span class="input-name" [class.active]="amountActive || amount.valid"
@@ -38,7 +47,6 @@
       <input
         type="text"
         class="input-value amount"
-        type="text"
         formControlName="amount"
         (focus)="amountActive = true"
         (blur)="amountActive = false"
@@ -48,12 +56,17 @@
     <span class="currency">GBP</span>
   </div>
 
+  <span
+    class="warning-no-border validation-error"
+    *ngIf="!amount.valid && amount.touched"
+    >Amount is required field</span
+  >
+
   <div class="input-wrap">
-    <span class="input-name" [class.active]="referenceActive || reference.valid"
+    <span class="input-name" [class.active]="referenceActive || reference.value"
       >Reference</span
     >
     <input
-      type="text"
       class="input-value"
       type="text"
       formControlName="reference"

@@ -28,6 +28,11 @@
   margin-bottom: 1rem;
 }
 
+.validation-error {
+  margin-top: -1rem;
+  display: block;
+}
+
 .active {
   transform: translateY(-200%);
   font-size: 0.6rem;

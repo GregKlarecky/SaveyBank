@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { IUser } from "src/app/interfaces/user.interface";
-import { formatDate } from "@angular/common";
 
 @Component({
   selector: "app-payment-form",
@@ -14,7 +13,7 @@ export class PaymentFormComponent implements OnInit {
     recipient: ["", Validators.required],
     accountNumber: ["", [Validators.required, Validators.minLength(32)]],
     amount: ["", Validators.required],
-    reference: ["", Validators.required]
+    reference: [""]
   });
 
   constructor(private fb: FormBuilder) {}

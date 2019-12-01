@@ -5,13 +5,17 @@
     >
     <input
       type="text"
-      type="text"
       class="input-value"
       formControlName="firstname"
       (focus)="firstnameActive = true"
       (blur)="firstnameActive = false"
     />
   </div>
+  <span
+    class="warning-no-border validation-error"
+    *ngIf="!firstname.valid && firstname.touched"
+    >First name is required field</span
+  >
 
   <div class="input-wrap">
     <span class="input-name" [class.active]="lastnameActive || lastname.valid"
@@ -20,26 +24,34 @@
     <input
       type="text"
       class="input-value"
-      type="text"
       formControlName="lastname"
       (focus)="lastnameActive = true"
       (blur)="lastnameActive = false"
     />
   </div>
-
+  <span
+    class="warning-no-border validation-error"
+    *ngIf="!lastname.valid && lastname.touched"
+    >Last name is required field</span
+  >
   <div class="input-wrap">
-    <span class="input-name" [class.active]="emailActive || email.valid"
+    <span class="input-name" [class.active]="emailActive || email.value"
       >Email</span
     >
     <input
-      type="text"
+      type="email"
       class="input-value"
-      type="text"
       formControlName="email"
       (focus)="emailActive = true"
       (blur)="emailActive = false"
+      email
     />
   </div>
+  <span
+    class="warning-no-border validation-error"
+    *ngIf="!email.valid && email.touched"
+    >Please provide correct email address</span
+  >
 
   <div class="input-wrap">
     <span class="input-name" [class.active]="passwordActive || password.valid"
@@ -53,6 +65,11 @@
       (blur)="passwordActive = false"
     />
   </div>
+  <span
+    class="warning-no-border validation-error"
+    *ngIf="!password.valid && password.touched"
+    >Password is required field</span
+  >
   <div class="form-actions">
     <button class="button" type="button" [routerLink]="['/login']">
       I have an account

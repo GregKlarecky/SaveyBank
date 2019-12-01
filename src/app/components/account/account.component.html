@@ -21,7 +21,7 @@
       <ul class="payment-list" *ngIf="payments?.length">
         <li class="payment" *ngFor="let payment of payments">
           <div class="payment-header">
-            <span class="date">{{ payment.date }}</span>
+            <span class="date">{{ payment.date | date: "d.LL.y" }}</span>
             <span class="balance">{{ payment.balance | currency: "GBP" }}</span>
           </div>
           <div class="payment-body">
@@ -82,7 +82,7 @@
           *ngFor="let payment of payments"
           [class.shine]="!payment.amount"
         >
-          <span class="date">{{ payment.date }}</span>
+          <span class="date">{{ payment.date | date: "d.LL.y" }}</span>
           <span class="recipient">{{ payment.recipient }}</span>
           <span class="amount">{{ payment.amount | currency: "GBP" }}</span>
           <span class="balance">{{ payment.balance | currency: "GBP" }}</span>

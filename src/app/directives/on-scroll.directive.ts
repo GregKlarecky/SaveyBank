@@ -10,7 +10,8 @@ export class OnScrollDirective implements OnInit {
   @Input() translate: boolean;
   public breakpoint: number = 50;
 
-  @HostBinding("style.height") height;
+  @HostBinding("class.nav-narrow") navNarrow;
+  @HostBinding("class.nav-thick") navThick;
   @HostBinding("style.transform") transform;
   @HostBinding("style.transition") transition =
     "transform ease-in 200ms, height ease-in 200ms";
@@ -25,7 +26,8 @@ export class OnScrollDirective implements OnInit {
     map(() => document.scrollingElement.scrollTop),
     tap(scrollTop => {
       if (scrollTop <= this.breakpoint && this.changeHeight) {
-        this.height = "100px";
+        this.navThick = true;
+        this.navNarrow = false;
       } else if (scrollTop <= this.breakpoint && this.translate) {
         this.transform = "translateY(0px)";
       }
@@ -47,9 +49,11 @@ export class OnScrollDirective implements OnInit {
     } else if (upwardsMove && this.translate) {
       this.transform = "translateY(0px)";
     } else if (!upwardsMove && this.changeHeight) {
-      this.height = "50px";
+      this.navNarrow = true;
+      this.navThick = false;
     } else if (upwardsMove && this.changeHeight) {
-      this.height = "100px";
+      this.navNarrow = false;
+      this.navThick = true;
     }
   }
 }

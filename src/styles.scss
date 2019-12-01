@@ -222,6 +222,13 @@ ul {
   }
 }
 
+.nav-narrow {
+  height: 50px;
+}
+.nav-thick {
+  height: 50px;
+}
+
 // Small devices (landscape phones, 576px and up)
 @media screen and (min-width: $screen-s) {
   .container {
@@ -240,6 +247,10 @@ ul {
 @media screen and (min-width: $screen-l) {
   .container {
     width: $screen-l;
+  }
+
+  .nav-thick {
+    height: 100px;
   }
 
   .d-mobile {

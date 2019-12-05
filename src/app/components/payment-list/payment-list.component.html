@@ -87,7 +87,10 @@
       <li
         class="desktop-payment"
         *ngFor="let payment of payments"
-        [class.shine]="!payment.amount"
+        [ngClass]="{
+          shine: loading,
+          'transparent-text': loading
+        }"
       >
         <span class="date">{{ payment.date | date: "d.LL.y" }}</span>
         <span class="recipient">{{ payment.recipient }}</span>
@@ -95,7 +98,9 @@
         <span class="balance">{{ payment.balance | currency: "GBP" }}</span>
       </li>
     </ul>
-
+    <div class="no-payments" *ngIf="!payments?.length">
+      No paymenets recorded
+    </div>
     <button class="button btn-brand align-center">
       Load more transactions
     </button>

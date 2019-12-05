@@ -229,6 +229,10 @@ ul {
   height: 50px;
 }
 
+.transparent-text {
+  color: transparent;
+}
+
 // Small devices (landscape phones, 576px and up)
 @media screen and (min-width: $screen-s) {
   .container {

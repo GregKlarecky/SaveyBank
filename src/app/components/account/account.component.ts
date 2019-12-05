@@ -16,10 +16,11 @@ PaymentListComponent;
 })
 export class AccountComponent implements OnInit, OnDestroy {
   public adMock2 = adMock2;
-  public payments: IPayment[] = emptyList;
+  public payments: IPayment[];
   public errorMessage: string;
   public user: IUser;
   public userSubsription: Subscription;
+  public loading: boolean = true;
 
   constructor(
     private apiService: ApiService,
@@ -32,12 +33,15 @@ export class AccountComponent implements OnInit, OnDestroy {
   }
 
   public getPayments(pageSize: number) {
+    this.loading = true;
     this.apiService.getPayments(pageSize).subscribe(
       (payments: IPayment[]) => {
+        this.loading = false;
         this.errorMessage = "";
         this.payments = payments;
       },
       error => {
+        this.loading = false;
         this.errorMessage = "Couldn't get payments from the server";
       }
     );

@@ -15,7 +15,7 @@ import { emptyList } from "../account/empty-list.mock";
 export class PaymentListComponent implements OnInit {
   public chevronDown = faChevronDown;
   public calendar = faCalendarAlt;
-  public payments: IPayment[] = emptyList;
+  public payments: IPayment[];
   public errorMessage: string;
   public selectDateError: string;
   public showDateFrom: boolean;
@@ -23,18 +23,20 @@ export class PaymentListComponent implements OnInit {
   public startDate: number;
   public dateFrom: number;
   public dateTo: number;
+  public loading: boolean = true;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     this.setTime();
-
     this.apiService.getPayments().subscribe(
       payments => {
+        this.loading = false;
         this.errorMessage = "";
         this.payments = payments;
       },
       error => {
+        this.loading = false;
         this.errorMessage = "Could not get payments from the server";
       }
     );
@@ -111,12 +113,15 @@ export class PaymentListComponent implements OnInit {
   }
 
   public submit() {
+    this.loading = true;
     this.apiService.getPayments(null, this.dateFrom, this.dateTo).subscribe(
       payments => {
+        this.loading = false;
         this.errorMessage = "";
         this.payments = payments;
       },
       error => {
+        this.loading = false;
         this.payments = [];
         this.errorMessage = "Could not get payments from the server";
       }

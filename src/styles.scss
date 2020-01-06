@@ -126,22 +126,22 @@ ul {
 }
 
 .d-mobile {
-  display: block;
+  display: block !important;
 }
 .d-mobile-flex {
-  display: flex;
+  display: flex !important;
 }
 .d-mobile-inline {
-  display: inline;
+  display: inline !important;
 }
 .d-desktop {
-  display: none;
+  display: none !important;
 }
 .d-desktop-flex {
-  display: none;
+  display: none !important;
 }
 .d-desktop-inline {
-  display: inline;
+  display: inline !important;
 }
 
 .shadow {
